@@ -24,28 +24,24 @@ api/connections
 Result
 ```
 ```json
-    [{
-            "FriendlyName": "Season2017",
-            "ServerName": "SqlRace-RESTAPI\\SQLEXPRESS",
-            "IsSqlite": false,
-            "DatabaseName": "SQLRACE01",
-            "Identifier": "Season2017",
-            "RootPath": "C:\\SQLRace_Filestream"
-        },
-        {
-            "FriendlyName": "Live Session Cache",
-            "ServerName": "DbEngine=SQLite;Data
-            Source = C: \\Users\\ AdminRestApi\\ AppData\\ Local\\ McLaren Applied
-            Technologies\\ ATLAS 10\\ SQL Race\\ LiveSessionCache.ssn2;PRAGMA
-            journal_mode = WAL;
-            ",
-            "IsSqlite": true,
-            "DatabaseName": "C:\\Users\\AdminRestApi\\AppData\\Local\\McLaren
-            Applied Technologies\\ ATLAS 10\\ SQL Race\\ LiveSessionCache.ssn2 ",
-            "Identifier": "Live Session Cache",
-            "RootPath": null
-        }
-    ]
+[
+    {
+        "FriendlyName": "Season2017",
+        "ServerName": "SqlRace-RESTAPI\\SQLEXPRESS",
+        "IsSqlite": false,
+        "DatabaseName": "SQLRACE01",
+        "Identifier": "Season2017",
+        "RootPath": "C:\\SQLRace_Filestream"
+    },
+    {
+        "FriendlyName": "Live Session Cache",
+        "ServerName": "DbEngine=SQLite;Data Source=C:\\Users\\AdminRestApi\\AppData\\Local\\McLaren Applied Technologies\\ATLAS 10\\SQL Race\\LiveSessionCache.ssn2;PRAGMA journal_mode=WAL;",
+        "IsSqlite": true,
+        "DatabaseName": "C:\\Users\\AdminRestApi\\AppData\\Local\\McLaren Applied Technologies\\ATLAS 10\\SQL Race\\LiveSessionCache.ssn2 ",
+        "Identifier": "Live Session Cache",
+        "RootPath": null
+    }
+]
 ```
 ## Query connection
 
