@@ -1,27 +1,26 @@
 # REST API
 
-(If you are a python user and would prefer to do everything from within python, you can go straight to the Getting Started with Python confluence
-page. Postman may still be useful as a time-saver and for debugging though.)
+(High level Introduction)
 
-```
-For querying the server it is recommended (but not essential) to use Postman.
-Download and install it if you don't have it.
-You don't need an account
-Get a password.
-For an example of this see the Authorization page (but change the username and password)
-For those who are not familiar with this, you use your password to ask the server for an access token. You then include this
-access token in the header in all requests to the server.
-Neubauer, Tomas I haven't included the usename or password here - maybe we can here?
-```
+## Getting started
+
+1. For querying the server it is recommended (but not essential) to use Postman.
+		 a. Download and install it if you don't have it.
+		 b. You don't need an account
+
+2. Get a password.
+		a. For an example of this see the Authorization page (but change the username and password)
+		b. For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
+
+
 ## Connections
 
 Query API could be connected to multiple sources of data.
 
-```
-Query connections
+```code
 api/connections
 ```
-```
+```json
 Result
 [
 {
@@ -65,7 +64,7 @@ Paging is supported by this query. Page and page size could be specified. Defaul
 Paging
 api/connections/Simulator/sessions?page=1&pageSize=
 ```
-```
+```json
 Result
 {
 "Key": {
@@ -96,7 +95,3 @@ Result
 "State": 2
 }
 ```
-
-You can query sessions content, see Sessions.
-
-
