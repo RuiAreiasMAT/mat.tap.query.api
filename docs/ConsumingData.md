@@ -13,7 +13,7 @@ Consuming Data
 =====================
 
 There are multiple ways how to consume data and multiple ways how to
-filter them, all of them grouped in the endpoint **"/data"**. Parameters of the session could be specified in URL or by a view. (See [Views](/docs/Views.md)).
+filter them, all of them grouped in the common endpoint **"/data"**. Parameters of the session could be specified in URL or by a view. (See [Views](/docs/Views.md)).
 
 Base url mask 
 ```
