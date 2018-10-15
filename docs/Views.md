@@ -13,7 +13,7 @@
 
 A user can specify the view of parameters and then use it to query parameters data without specifying all parameters every time. 
 
-### Get all views
+## Get all views
 
 Example
 ```
@@ -30,7 +30,7 @@ Result
     }
 ]
 ```
-### Query view parameters
+## Query view parameters
 
 Request
 ```
@@ -46,11 +46,11 @@ Result
 ```
 
 
-## CRUD API for Views
+# CRUD API for Views
 
 API exposes a CRUD API for views. You can use this CRUD in order to create, modify or delete "views".
 
-### Add new view
+## Add new view
 
 Request
 ```
@@ -64,7 +64,7 @@ Body
     "Description": "Some test parameters."
 }
 ```
-### Edit view
+## Edit view
 
 ```
 Request
@@ -81,11 +81,11 @@ Body
 }
 ```
 
-### Delete view
+## Delete view
 
 (TODO)
 
-### Add view parameters
+## Add view parameters
 
 Request
 ```
@@ -108,7 +108,7 @@ Result
     "vCar:Chassis"
 ]
 ```
-### Delete view parameters
+## Delete view parameters
 
 Request
 ```
@@ -127,7 +127,7 @@ Result
     "vCar:Chassis"
 ]
 ```
-## Consuming Data using a View
+# Consuming Data using a View
 
 (High level explanation)
 
