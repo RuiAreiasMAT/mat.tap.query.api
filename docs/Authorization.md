@@ -20,15 +20,17 @@ To ask for a password you have to use the following endpoint filling up the para
 /token
 ```
 
-"grant_type" is always the same value "password". Next image shows an example of this type of request using [Postman](https://getpostman.com):
+"grant_type" is always the same value "password". Following image shows an example of this type of request:
 
 <img src="Authorization1.png" alt="drawing" width="80%"/>
 
-Token expires in number of seconds returned in JSON (1 day here).
+Field "access_token" of the result gives you the bearer token that you have to use in each request of the API. Token expires in number of seconds returned in JSON (1 day here).
 
 ## Authorization of request
 
-After that you have to copy from previous token response into every request header.
+After getting a token from the server you have to use this Token in each request of the API, putting it as parameter in the Header of the call. The name of the parameter is "Authorization" and the value is the word "Bearer" followed by a space and the Token string.
+
+This is an example using [Postman](https//getpostman.com):
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
