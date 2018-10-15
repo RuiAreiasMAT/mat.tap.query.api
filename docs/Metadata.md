@@ -12,7 +12,7 @@
 Querying Metadata
 ========  
 
-There are multiple endpoints available for query sessions information.  
+There are multiple endpoints available for query sessions metadata information.  
 
 (High level explanation here)
 
