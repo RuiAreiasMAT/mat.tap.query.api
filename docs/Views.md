@@ -11,7 +11,7 @@
 
 # Views
 
-A user can specify the view of parameters and then use it to query parameters data without specifying all parameters every time. 
+A user can specify the view of parameters and then use it to query parameters data without specifying all parameters every time in the url when consuming data. 
 
 ## Get all views
 
