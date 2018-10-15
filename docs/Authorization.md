@@ -24,13 +24,11 @@ To ask for a password you have to use the following endpoint filling up the para
 
 <img src="Authorization1.png" alt="drawing" width="80%"/>
 
-Field "access_token" of the result gives you the bearer token that you have to use in each request of the API. Token expires in number of seconds returned in JSON (1 day here).
+Field "access_token" of the result gives you the bearer token that you want to use. Token expires in number of seconds returned in JSON (1 day here).
 
 ## Authorization of request
 
-After getting a token from the server you have to use this Token in each request of the API, putting it as parameter in the Header of the call. The name of the parameter is "Authorization" and the value is the word "Bearer" followed by a space and the Token string.
-
-This is an example using [Postman](https//getpostman.com):
+After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The Parameter name is "Authorization" and the value is keyword "bearer" followed by a space and the Token string.
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
