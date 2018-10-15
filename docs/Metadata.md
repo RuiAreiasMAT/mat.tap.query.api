@@ -4,12 +4,12 @@
 - [**Introduction**](/README.md)<br>
 - [**Getting started**](/docs/GettingStarted.md)<br>
 - [**Authorization**](/docs/Authorization.md)<br>
-- [**Query Metadata**](/docs/Metadata.md)<br>
+- [**Querying Metadata**](/docs/Metadata.md)<br>
 - [**Consuming Data**](/docs/ConsumingData.md)<br>
 - [**Views**](/docs/Views.md)<br>
 
 
-Query Metadata
+Querying Metadata
 ========  
 
 There are multiple endpoints available for query sessions information.  
@@ -118,7 +118,7 @@ Items
 
 (High level explanation)
 
-Query list of items in session:  
+Query list of items in a session:  
 
 Query  
 ```
@@ -178,7 +178,9 @@ Result
 
 Laps  
 ====  
-  
+
+(High level explanation)
+
 Query list of laps in session:  
   
 Query
@@ -190,7 +192,7 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey}/laps
 Query example  
   
 ```
-api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
 ```
   
 Result
@@ -235,13 +237,15 @@ Result
 
 Parameters  
 ==========  
-  
-Query list of parameters in session:  
+
+(High level explanation)
+
+Query list of parameters in a session:  
   
 Query parameters  
   
 ```
-api/connections/{connection friendly name}/sessions/{sessionKey}/parameters
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters
 ```
   
 Optional parameters  
@@ -256,7 +260,7 @@ Optional parameters
 Query parameters example  
   
 ```
-api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
 ```
   
 ### Paging  
@@ -264,7 +268,7 @@ api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
 Query parameters example  
   
 ```
-api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&amp;pageSize=50
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&amp;pageSize=50
 ```
   
 ### Filtering  
@@ -272,7 +276,7 @@ api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
 Query parameters example  
   
 ```
-api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
 ```
   
 Result  
