@@ -80,6 +80,11 @@ Body
     "Description": "Some test parameters."
 }
 ```
+
+### Delete view
+
+(TODO)
+
 ### Add view parameters
 
 Request
@@ -122,7 +127,9 @@ Result
     "vCar:Chassis"
 ]
 ```
-## Consuming Data using a view
+## Consuming Data using a View
+
+(High level explanation)
 
 Example
 
