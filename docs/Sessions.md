@@ -4,12 +4,12 @@
 - [**Introduction**](/README.md)<br>
 - [**Getting started**](/docs/GettingStarted.md)<br>
 - [**Authorization**](/docs/Authorization.md)<br>
-- [**Sessions**](/docs/Sessions.md)<br>
-- [**Query Parameters**](/docs/QueryParameters.md)<br>
+- [**Query Metadata**](/docs/Metadata.md)<br>
+- [**Consuming Data**](/docs/ConsumingData.md)<br>
 - [**Views**](/docs/Views.md)<br>
 
 
-Sessions  
+Query Metadata
 ========  
 
 There are multiple endpoints available for query sessions information.  
