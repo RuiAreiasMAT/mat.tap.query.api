@@ -17,7 +17,7 @@
 		 b. You don't need an account
 
 2. Get a password.
-		a. For an example of this see the Authorization page (but change the username and password)
+		a. For an example of this see the [Authorization](Authorization.md) page (but change the username and password)
 		b. For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
 
 
