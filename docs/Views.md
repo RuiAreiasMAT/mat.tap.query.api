@@ -46,7 +46,7 @@ Result
 ```
 
 
-## Query view parameters
+## CRUD API for Views
 
 API exposes a CRUD API for views. You can use this CRUD in order to create, modify or delete "views".
 
