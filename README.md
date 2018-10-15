@@ -1,4 +1,4 @@
-# ![Markdown Here logo](https://raw.github.com/adam-p/markdown-here/master/src/common/images/icon48.png) Telemetry Analytics API
+# ![Markdown Here logo](branding.png) Telemetry Analytics API
 
 [**Getting started**](/README.md)<br>
 [**Authorization**](Authorization.md)<br>
