@@ -14,7 +14,7 @@ Query parameters data
 
 There are multiple ways how to consume data and multiple ways how to
 filter them. Parameters could be specified in URL or by a view. (See
-[Views](/docs/Views.md).
+[Views](/docs/Views.md)).
 
 Optional parameters
 ===================
