@@ -1,4 +1,4 @@
-# ![logo](branding.png) Telemetry Analytics API
+# ![logo](branding.bmp) Telemetry Analytics API
 
 [**Getting started**](/README.md)<br>
 [**Authorization**](Authorization.md)<br>
