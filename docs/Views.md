@@ -133,12 +133,14 @@ Result
 (High level explanation)
 
 Example
-
 ```
 GET api/connections/SQLRACE01/sessions/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883/view/test4/10/data
 ```
 
+Result
+```
 (Result example here)
+```
 
 # Multiple sessions query
 
