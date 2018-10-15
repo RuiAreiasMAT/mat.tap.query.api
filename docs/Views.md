@@ -149,8 +149,10 @@ query.
 
 Example
 ```
-GET api/connections/SQLRACE01/sessions
-/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,92cbbae9-cd2c-aff8-f071-856bc116405a
+GET api/connections/SQLRACE01/sessions/
+26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,
+21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,
+92cbbae9-cd2c-aff8-f071-856bc116405a
 /view/test4/10/data/count?filter=vCar:Chassis;gt;300
 ```
 
