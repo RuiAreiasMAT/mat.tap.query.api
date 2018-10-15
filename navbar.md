@@ -1,7 +1,7 @@
 # Telemetry Analytics API
 
 * [Home](/README.md)
-* [Authorization](/docs/Authorization.md)
-* [Sessions](/docs/Sessions.md)
-* [Views](/docs/Views.md)
-* [QueryParameters](/docs/QueryParameters.md)
+* [Authorization](/Authorization.md)
+* [Sessions](/Sessions.md)
+* [Views](/Views.md)
+* [QueryParameters](/QueryParameters.md)
