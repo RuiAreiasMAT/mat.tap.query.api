@@ -15,14 +15,14 @@ Consuming Data
 There are multiple ways how to consume data and multiple ways how to
 filter them, all of them grouped in the common endpoint **"/data"**. Parameters of the session could be specified in URL or by a view. (See [Views](/docs/Views.md)).
 
-Base url mask 
+### Base url mask 
+
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
-Url parameters
-----------
+### Url parameters
 
 | Parameter name | Description                                                                                         | Default value | Example     |
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
@@ -31,8 +31,7 @@ Url parameters
 | parameters     | List of parameters of the session to query.  |               | vCar,NGear    |
 | frequency      | Frequency (Todo details of this parameter).  |               | 10            |
 
-Optional parameters
--------------------
+### Optional parameters
 
 | Parameter name | Description                                                                                         | Default value | Example     |
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
