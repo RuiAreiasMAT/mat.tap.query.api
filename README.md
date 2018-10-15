@@ -10,7 +10,7 @@
 [**Query Parameters**](QueryParameters.md)<br>
 
 
-## Getting started
+# Getting started
 
 1. For querying the server it is recommended (but not essential) to use Postman.
 		 a. Download and install it if you don't have it.
