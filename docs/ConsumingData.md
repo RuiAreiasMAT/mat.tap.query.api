@@ -237,7 +237,7 @@ be specified.
 
 Structure of one parameter filter instance is:
 
-Code Block 13 Parameter filter url mask
+Parameter filter url mask
 
 ```
 {parameterName};{filterOperationShortcut};{value}
@@ -264,7 +264,8 @@ All data queries could be done over multiple sessions.
 Mask
 
 ```
-api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
 Example
