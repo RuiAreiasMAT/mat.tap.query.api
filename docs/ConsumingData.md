@@ -241,6 +241,7 @@ Code Block 13 Parameter filter url mask
 
 ```
 {parameterName};{filterOperationShortcut};{value}
+```
 
 Parameter filter example
 
