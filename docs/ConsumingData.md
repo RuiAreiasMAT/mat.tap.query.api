@@ -13,8 +13,24 @@ Consuming Data
 =====================
 
 There are multiple ways how to consume data and multiple ways how to
-filter them. Parameters could be specified in URL or by a view. (See
+filter them. Parameters of the session could be specified in URL or by a view. (See
 [Views](/docs/Views.md)).
+
+Base url route
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+```
+
+Url parameters
+----------
+
+| Parameter name | Description                                                                                         | Default value | Example     |
+|----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
+| connection     | Connection friendly name.   |               | SQLRACE01                                  |
+| sessionKey     | Session Key.               |               | 016fa61e-33e2-7e85-1bc9-4ab56c668136       |
+| parameters     | List of parameters of the session to query.  |               | vCar,NGear    |
+| frequency      | Frequency (Todo details of this parameter).  |               | 10            |
 
 Optional parameters
 -------------------
@@ -28,30 +44,27 @@ Optional parameters
 | page           | Index of page returned in result (0 is first page)                                                  |               | 3           |
 | pageSize       | Size of one page.                                                                                   | 200           | 50          |
 
+
 Number of samples
 -----------------
-
 
 Easiest, fastest and probably best way to start is a query that returns
 a number of samples that fit all filters. Note: instead of parameters
 you can use [Views](/docs/Views.md).
 
 Mask
-
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
 ```
 
 Example
-
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
 /parameters/vCar/10/data/count?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
-
 ```
 5646
 ```
@@ -62,21 +75,18 @@ Time ranges
 This type of view would return time ranges of result samples.
 
 Mask
-
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
 ```
 
 Example
-
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
 /parameters/vCar/10/data/timeRanges?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
-
 ```json
     {
         "StartTime": "11:19:41.1650000",
@@ -111,21 +121,18 @@ Grouped data
 This view will return data grouped to time ranges.
 
 Mask
-
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
 ```
 
 Example
-
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
 /parameters/vCar/10/data/grouped?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
-
 ```json
 {
         "StartTime": "11:19:41.1650000",
@@ -173,7 +180,6 @@ This view will return all samples flat across all time ranges. This view
 of data is paged. Default page size is 200 samples.
 
 Mask
-
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
@@ -183,14 +189,12 @@ Note that some signals have a colon ( : ) in, so we use semicolons ( ; )
 for the filtering.
 
 Example
-
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
 /parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
-
 ```json
     {
         "Time": "11:19:45.0450000",
@@ -246,13 +250,11 @@ be specified.
 Structure of one parameter filter instance is:
 
 Parameter filter url mask
-
 ```
 {parameterName};{filterOperationShortcut};{value}
 ```
 
 Parameter filter example
-
 ```
 vCar;gt;300
 ```
@@ -260,7 +262,6 @@ vCar;gt;300
 Example of filtering values that have vCar between 100 and 150 kph.
 
 Filter setting example
-
 ```
 vCar:Chassis;gt;100,vCar:Chassis;le;150
 ```
@@ -271,21 +272,18 @@ Multiple sessions data
 All data queries could be done over multiple sessions.
 
 Mask
-
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
 Example
-
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a
 /parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150
 ```
 
 Result
-
 ```json
 [
     {
