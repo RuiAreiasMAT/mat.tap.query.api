@@ -2,7 +2,7 @@
 
 (High level Introduction)
 
-### Table of Contents
+#### Table of Contents
 [**Getting started**](/README.md)<br>
 [**Authorization**](Authorization.md)<br>
 [**Sessions**](Sessions.md)<br>
@@ -10,7 +10,7 @@
 [**Query Parameters**](QueryParameters.md)<br>
 
 
-# Getting started
+## Getting started
 
 1. For querying the server it is recommended (but not essential) to use Postman.
 		 a. Download and install it if you don't have it.
@@ -21,7 +21,7 @@
 		b. For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
 
 
-## Connections
+### Connections
 
 Query API could be connected to multiple sources of data.
 
@@ -51,7 +51,7 @@ Result
     }
 ]
 ```
-## Query connection
+### Query connection
 
 Every connection provides a list of sessions.
 
