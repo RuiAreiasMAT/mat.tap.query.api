@@ -32,9 +32,7 @@ Optional parameters
 Filter  
 ------  
   
-Please note that some characters are not allowed in URL and therefore  
-must be specified with percentage and symbol number. For example: & must  
-be replaced by %26.  
+Please note that some characters are not allowed in URL and therefore must be specified with percentage and symbol number. For example: & must be replaced by %26.  
   
 Mask
 ```
@@ -94,9 +92,7 @@ Optional parameters
 Filter  
 ------  
   
-Please note that some characters are not allowed in URL and therefore  
-must be specified with percentage and symbol number. For example: & must  
-be replaced by %26.  
+Please note that some characters are not allowed in URL and therefore must be specified with percentage and symbol number. For example: & must be replaced by %26.  
 
 Mask
 ```
@@ -108,119 +104,6 @@ Example
 GET api/connections/Simulator/sessions/live
 ```
 
-Items  
-=====
-
-The "/sessions/{sessionKey}/items" endpoint give you access to a list **items** available for a specific session. (High level explanation of Items of the Session?)
-
-Mask
-```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/items
-```
-  
-Example  
-```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/items
-```
-  
-Result  
-```json
-[
-    {
-        "Name": "Session Description",
-        "Value": "P1GTR"
-    },
-    {
-        "Name": "Session Name",
-        "Value": "GAS R1"
-    },
-    {
-        "Name": "Session Number",
-        "Value": "R1"
-    },
-    {
-        "Name": "Driver",
-        "Value": "GAS"
-    },
-    {
-        "Name": "Car",
-        "Value": "P1GTR"
-    },
-    {
-        "Name": "Circuit",
-        "Value": "Bar"
-    },
-    {
-        "Name": "Race/Test",
-        "Value": "Simulator"
-    },
-    {
-        "Name": "Pit Lane Trigger",
-        "Value": "None"
-    },
-    {
-        "Name": "Unit Data Source",
-        "Value": "vTAG RF,Ethernet Telemetry/Wirelink "
-    },
-    {
-        "Name": "Date of recording",
-        "Value": "07/08/2017"
-    }
-]
-```
-
-Laps  
-====  
-
-The "/sessions/{sessionKey}/laps" endpoint give you access to a list **laps** available for a specific session. (High level explanation of Laps of the Session)
-  
-Mask
-```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/laps
-```
-  
-Example 
-```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
-```
-  
-Result
-```json
-[
-    {
-        "StartTime": "12:08:15.5120000",
-        "EndTime": "12:09:05.7300000",
-        "LapTime": "00:00:50.2180000",
-        "CountForFastestLap": false,
-        "Name": "Out Lap",
-        "Number": 0
-    },
-    {
-        "StartTime": "12:09:05.7300000",
-        "EndTime": "12:13:37.1600000",
-        "LapTime": "00:04:31.4300000",
-        "CountForFastestLap": true,
-        "Name": "Lap 16",
-        "Number": 16
-    },
-    {
-        "StartTime": "12:13:37.1600000",
-        "EndTime": "12:16:15.0300000",
-        "LapTime": "00:02:37.8700000",
-        "CountForFastestLap": true,
-        "Name": "Lap 17",
-        "Number": 17
-    },
-    {
-        "StartTime": "12:16:15.0300000",
-        "EndTime": "12:18:48.8300000",
-        "LapTime": "00:02:33.8000000",
-        "CountForFastestLap": true,
-        "Name": "Lap 18",
-        "Number": 18
-    }
-]
-```
 
 Parameters  
 ==========  
@@ -304,6 +187,121 @@ Result
         "MinimumValue": 0,
         "Description": "Unlimited car speed for slip calcs from vCarHigh"
     }
+```
+
+
+Items  
+=====
+
+The "/sessions/{sessionKey}/items" endpoint give you access to a list **items** available for a specific session. (High level explanation of Items of the Session?)
+
+Mask
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/items
+```
+  
+Example  
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/items
+```
+  
+Result  
+```json
+[
+    {
+        "Name": "Session Description",
+        "Value": "P1GTR"
+    },
+    {
+        "Name": "Session Name",
+        "Value": "GAS R1"
+    },
+    {
+        "Name": "Session Number",
+        "Value": "R1"
+    },
+    {
+        "Name": "Driver",
+        "Value": "GAS"
+    },
+    {
+        "Name": "Car",
+        "Value": "P1GTR"
+    },
+    {
+        "Name": "Circuit",
+        "Value": "Bar"
+    },
+    {
+        "Name": "Race/Test",
+        "Value": "Simulator"
+    },
+    {
+        "Name": "Pit Lane Trigger",
+        "Value": "None"
+    },
+    {
+        "Name": "Unit Data Source",
+        "Value": "vTAG RF,Ethernet Telemetry/Wirelink "
+    },
+    {
+        "Name": "Date of recording",
+        "Value": "07/08/2017"
+    }
+]
+```
+
+Laps  
+====  
+
+The "/sessions/{sessionKey}/laps" endpoint give you access to the information with the **laps** of specific session. 
+  
+Mask
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/laps
+```
+  
+Example 
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
+```
+  
+Result
+```json
+[
+    {
+        "StartTime": "12:08:15.5120000",
+        "EndTime": "12:09:05.7300000",
+        "LapTime": "00:00:50.2180000",
+        "CountForFastestLap": false,
+        "Name": "Out Lap",
+        "Number": 0
+    },
+    {
+        "StartTime": "12:09:05.7300000",
+        "EndTime": "12:13:37.1600000",
+        "LapTime": "00:04:31.4300000",
+        "CountForFastestLap": true,
+        "Name": "Lap 16",
+        "Number": 16
+    },
+    {
+        "StartTime": "12:13:37.1600000",
+        "EndTime": "12:16:15.0300000",
+        "LapTime": "00:02:37.8700000",
+        "CountForFastestLap": true,
+        "Name": "Lap 17",
+        "Number": 17
+    },
+    {
+        "StartTime": "12:16:15.0300000",
+        "EndTime": "12:18:48.8300000",
+        "LapTime": "00:02:33.8000000",
+        "CountForFastestLap": true,
+        "Name": "Lap 18",
+        "Number": 18
+    }
+]
 ```
 
     
