@@ -12,13 +12,16 @@
 Sessions  
 ========  
 
-(High level Introduction)
+There are multiple endpoints available for query sessions information.  
 
-There is multiple queries available for sessions.  
+(High level explanation here)
+
   
 Query sessions  
 ==============  
-  
+
+The "/sessions" endpoint give you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
+
 Optional parameters  
 -------------------  
   
@@ -37,29 +40,18 @@ must be specified with percentage and symbol number. For example: & must
 be replaced by %26.  
   
 Query  
-  
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>GET api/connections/{connection friendly name}/sessions/</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
-  
+
+```
+GET api/connections/{connection friendly name}/sessions
+```
+
 Example  
-  
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>GET api/connections/Simulator/sessions?items=Driver:KHA,Car:P1GTR&amp;filter=LapsCount &gt; 5 %26%26 TimeOfRecording &gt; DateTime.Parse(&quot;2017-12-18&quot;)</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
-  
+
+```
+GET api/connections/Simulator/sessions?items=Driver:KHA,Car:P1GTR&filter=LapsCount > 5 %26%26 TimeOfRecording >
+DateTime.Parse("2017-12-18")
+```
+
 Result  
 ```json
 [
@@ -92,63 +84,53 @@ Result
   
 Query live sessions  
 ===================  
-  
-Code Block 4 Query  
-  
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>GET api/connections/{connection friendly name}/sessions/live</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
-  
-Code Block 5 Example  
-  
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>GET api/connections/Simulator/sessions/live</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
 
- 
+The "/sessions/live" endpoint give you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
+
+Optional parameters  
+-------------------  
+  
+| Parameter name | Description | Default value | Example |  
+|----------------|-------------------------------------------------------------|---------------|---------------------------------------------------------------------------|  
+| filter | This filter returned query with expression. | | LapsCount &gt; 5 %26%26 TimeOfRecording &gt; DateTime.Parse("2017-12-18") |  
+| page | Index of page returned in result (0 is first page) | | 3 |  
+| pageSize | Size of one page. | 200 | 50 |  
+  
+Filter  
+------  
+  
+Please note that some characters are not allowed in URL and therefore  
+must be specified with percentage and symbol number. For example: & must  
+be replaced by %26.  
+
+Query  
+```
+GET api/connections/{connection friendly name}/sessions/live
+```
+  
+Example  
+```
+GET api/connections/Simulator/sessions/live
+```
+
 Items  
-=====  
-  
+=====
+
+(High level explanation)
+
 Query list of items in session:  
+
+Query  
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/items
+```
   
-Code Block 6 Query  
+Example  
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/items
+```
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/items/</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
-  
-Code Block 7 Example  
-  
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/items</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
-  
-Code Block 8 Result  
-  
+Result  
 ```json
 [
     {
@@ -199,31 +181,19 @@ Laps
   
 Query list of laps in session:  
   
-Code Block 9 Query  
+Query
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/laps/</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/laps
+```
   
-Code Block 10 Query example  
+Query example  
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
+```
+api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
+```
   
-Code Block 11 Result  
+Result
   
 ```json
 [
@@ -268,17 +238,11 @@ Parameters
   
 Query list of parameters in session:  
   
-Code Block 12 Query parameters  
+Query parameters  
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
+```
+api/connections/{connection friendly name}/sessions/{sessionKey}/parameters
+```
   
 Optional parameters  
 -------------------  
@@ -289,47 +253,29 @@ Optional parameters
 | pageSize | Size of one page. | 50 |  
 | contains | Text filter | vCar |  
   
-Code Block 13 Query parameters example  
+Query parameters example  
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
+```
+api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
+```
   
 ### Paging  
   
-Code Block 14 Query parameters example  
+Query parameters example  
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&amp;pageSize=50</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
+```
+api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&amp;pageSize=50
+```
   
 ### Filtering  
   
-Code Block 15 Query parameters example  
+Query parameters example  
   
-<table>  
-<tbody>  
-<tr class="odd">  
-<td><blockquote>  
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar</p>  
-</blockquote></td>  
-</tr>  
-</tbody>  
-</table>  
+```
+api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
+```
   
-Code Block 16 Result  
+Result  
   
 ```json
 {
