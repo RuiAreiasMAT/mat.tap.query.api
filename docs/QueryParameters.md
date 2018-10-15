@@ -1,9 +1,20 @@
+# ![logo](/docs/branding.bmp) Telemetry Analytics API
+
+### Table of Contents
+[**Introduction**](/README.md)<br>
+[**Getting started**](/docs/GettingStarted.md)<br>
+[**Authorization**](/docs/Authorization.md)<br>
+[**Sessions**](/docs/Sessions.md)<br>
+[**Query Parameters**](/docs/QueryParameters.md)<br>
+[**Views**](/docs/Views.md)<br>
+
+
 Query parameters data
 =====================
 
 There are multiple ways how to consume data and multiple ways how to
 filter them. Parameters could be specified in URL or by a view. (See
-[Views](https://confluence.mclaren.com/display/MATMDSG/Views)).
+[Views](/docs/Views.md).
 
 Optional parameters
 ===================
