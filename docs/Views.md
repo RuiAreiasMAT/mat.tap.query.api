@@ -1,3 +1,14 @@
+# ![logo](/docs/branding.bmp) Telemetry Analytics API
+
+### Table of Contents
+[**Introduction**](/README.md)<br>
+[**Getting started**](/docs/GettingStarted.md)<br>
+[**Authorization**](/docs/Authorization.md)<br>
+[**Sessions**](/docs/Sessions.md)<br>
+[**Query Parameters**](/docs/QueryParameters.md)<br>
+[**Views**](/docs/Views.md)<br>
+
+
 # Views
 
 A user can specify the view of parameters and then use it to query parameters data without specifying all parameters every time. API exposes
