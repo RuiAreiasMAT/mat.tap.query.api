@@ -13,13 +13,13 @@
 
 1. For querying the server it is recommended (but not essential) to use [Postman](https://getpostman.com).
 
-	 a. Download and install it if you don't have it.
-	 b. You don't need an account
+	 - Download and install it if you don't have it.
+	 - You don't need an account
 
 2. Get a password.
 
-	a. For an example of this see the [Authorization](Authorization.md) page (but change the username and password)
-	b. For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
+	- For an example of this see the [Authorization](Authorization.md) page (but change the username and password)
+	- For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
 
 
 ## Connections
