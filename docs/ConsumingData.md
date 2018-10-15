@@ -17,7 +17,7 @@ filter them. Parameters could be specified in URL or by a view. (See
 [Views](/docs/Views.md)).
 
 Optional parameters
-===================
+-------------------
 
 | Parameter name | Description                                                                                         | Default value | Example     |
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
@@ -29,77 +29,47 @@ Optional parameters
 | pageSize       | Size of one page.                                                                                   | 200           | 50          |
 
 Number of samples
-=================
+-----------------
+
 
 Easiest, fastest and probably best way to start is a query that returns
 a number of samples that fit all filters. Note: instead of parameters
-you can use
-[Views](https://confluence.mclaren.com/display/MATMDSG/Views).
+you can use [Views](https://confluence.mclaren.com/display/MATMDSG/Views).
 
-Code Block 1 Mask
+Mask
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
+```
 
-Code Block 2 Example
+Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+```
 
-Code Block 3 Result
+Result
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>5646</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+5646
+```
 
 Time ranges
-===========
+-----------
 
 This type of view would return time ranges of result samples.
 
-Code Block 4 Mask
+Mask
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
+```
 
-Code Block 5 Example
+Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/timeRanges?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/timeRanges?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+```
 
 Code Block 6 Result
 
@@ -132,35 +102,23 @@ Code Block 6 Result
 ```    
 
 Grouped data
-============
+------------
 
 This view will return data grouped to time ranges.
 
-Code Block 7 Mask
+Mask
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
+```
 
-Code Block 8 Example
+Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+```
 
-Code Block 9 Result
+Result
 
 ```json
 {
@@ -203,39 +161,27 @@ Code Block 9 Result
 ```
 
 Flat data
-=========
+---------
 
 This view will return all samples flat across all time ranges. This view
 of data is paged. Default page size is 200 samples.
 
-Code Block 10 Mask
+Mask
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+```
 
 Note that some signals have a colon ( : ) in, so we use semicolons ( ; )
 for the filtering.
 
-Code Block 11 Example
+Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+```
 
-Code Block 12 Result
+Result
 
 ```json
     {
@@ -271,13 +217,12 @@ Code Block 12 Result
 ```
 
 Filter
-======
+------
 
 The filter is optional parameter where multiple types of filters could
 be specified.
 
-Filter types
-------------
+### Filter types
 
 | Shortcut | Full name             |
 |----------|-----------------------|
@@ -288,80 +233,46 @@ Filter types
 | le       | Less than or equal    |
 | ne       | Not equal             |
 
-Parameter filter
-----------------
+### Parameter filter
 
 Structure of one parameter filter instance is:
 
 Code Block 13 Parameter filter url mask
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>{parameterName};{filterOperationShortcut};{value}</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+{parameterName};{filterOperationShortcut};{value}
 
-Code Block 14 Parameter filter example
+Parameter filter example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>vCar;gt;300</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+vCar;gt;300
+```
 
 Example of filtering values that have vCar between 100 and 150 kph.
 
-Code Block 15 Filter setting example
+Filter setting example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>vCar:Chassis;gt;100,vCar:Chassis;le;150</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
-
+```
+vCar:Chassis;gt;100,vCar:Chassis;le;150
 
 Multiple sessions data
-======================
+----------------------
 
 All data queries could be done over multiple sessions.
 
-Code Block 16 Mask
+Mask
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+```
 
-Code Block 17 Example
+Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+```
+api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150
+```
 
-Code Block 18 Result
+Result
 
 ```json
 [
@@ -459,19 +370,12 @@ Other views
 All data views and parameters specifing is available with multi session
 query.
 
-Code Block 19 Example
+Example
+```
+GET api/connections/SQLRACE01/sessions/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,92cbbae9-cd2c-aff8-f071-856bc116405a/view/test4/10/data/count?filter=vCar:Chassis;gt;300
+```
 
-<table>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>api/connections/SQLRACE01/sessions/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,92cbbae9-cd2c-aff8-f071-856bc116405a/view/test4/10/data/count?filter=vCar:Chassis;gt;300</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
-
-Code Block 20 Result
+Result
 ```json
 {
     "26c9ed85-e7ab-0e3f-0fc0-8a69f7743883": 0,
