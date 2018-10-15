@@ -131,7 +131,7 @@ Result
 
 # Consuming Data using a View
 
-Consuming data in views is as easy as replacing the list of parameters of the session in the common Url Mask for consuming data with the name of the View that we want to use.
+Consuming data in views is as easy as replacing the list of parameters of the session in the common Url Mask for consuming data with the name of the View that we want to use. See [Consuming data](/docs/ConsumingData.md) for extended information.
 
 Mask
 ```
