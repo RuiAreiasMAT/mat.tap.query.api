@@ -1,3 +1,5 @@
+# Telemetry Analytics API
+
 * [Home](/README.md)
 * [Authorization](/docs/Authorization.md)
 * [Sessions](/docs/Sessions.md)
