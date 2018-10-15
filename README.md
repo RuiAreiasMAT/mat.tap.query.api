@@ -9,15 +9,6 @@
 [**Views**](Views.md)<br>
 [**Query Parameters**](QueryParameters.md)<br>
 
-### Table of Contents
-**[Installation Instructions](#installation-instructions)**<br>
-**[Usage Instructions](#usage-instructions)**<br>
-**[Troubleshooting](#troubleshooting)**<br>
-**[Compatibility](#compatibility)**<br>
-**[Notes and Miscellaneous](#notes-and-miscellaneous)**<br>
-**[Building the Extension Bundles](#building-the-extension-bundles)**<br>
-**[Next Steps, Credits, Feedback, License](#next-steps)**<br>
-
 
 ## Getting started
 
