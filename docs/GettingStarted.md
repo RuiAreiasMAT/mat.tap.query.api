@@ -24,14 +24,14 @@
 
 ## Connections
 
-Query API could be connected to multiple sources of data.
+Telemetry Query API could be connected to multiple sources of data. You can query these sources with the following endpoint:
 
 ```
 api/connections
 ```
-```
-Result
-```
+
+Result:
+
 ```json
 [
     {
@@ -55,12 +55,12 @@ Result
 
 ## Query connection
 
-Every connection provides a list of sessions.
+Every connection provides a list of sessions. 
 
 ```
 api/connections/{connection friendly name}/sessions
 ```
-Example
+Example:
 ```
 api/connections/Simulator/sessions
 ```
@@ -69,9 +69,7 @@ Paging is supported by this query. Page and page size could be specified. Defaul
 ```
 api/connections/Simulator/sessions?page=1&pageSize=
 ```
-```
-Result
-```
+Result:
 ```json
     {
         "Key": {
