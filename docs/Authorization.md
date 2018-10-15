@@ -17,7 +17,7 @@ This API uses a Token authentication. You use your user/password to ask the serv
 To ask for a password you have to use the following endpoint filling up the parameters "username", "password" and "grant_type" in the body of the request. Field "grant_type" is always the same value "password":
 
 ```
-/token
+GET /token
 ```
 
 Following image shows an example of this type of request:
