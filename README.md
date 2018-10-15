@@ -1,4 +1,4 @@
-# ![logo](branding.bmp) Telemetry Analytics API
+# ![logo](/docs/branding.bmp) Telemetry Analytics API
 
 (High level Introduction)
 
