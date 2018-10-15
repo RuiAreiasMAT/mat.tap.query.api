@@ -1,15 +1,13 @@
 # ![logo](branding.bmp) Telemetry Analytics API
 
+(High level Introduction)
+
+### Table of Contents
 [**Getting started**](/README.md)<br>
 [**Authorization**](Authorization.md)<br>
 [**Sessions**](Sessions.md)<br>
 [**Views**](Views.md)<br>
 [**Query Parameters**](QueryParameters.md)<br>
-
-
-# REST API
-
-(High level Introduction)
 
 ### Table of Contents
 **[Installation Instructions](#installation-instructions)**<br>
