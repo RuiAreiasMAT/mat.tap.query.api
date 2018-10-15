@@ -11,12 +11,12 @@
 
 # Views
 
-A user can specify the view of parameters and then use it to query parameters data without specifying all parameters every time. API exposes CRUD API for views.
+A user can specify the view of parameters and then use it to query parameters data without specifying all parameters every time. 
 
 ### Get all views
 
+Example
 ```
-GET example
 GET api/views
 ```
 Result
@@ -30,7 +30,7 @@ Result
     }
 ]
 ```
-#### Query view parameters
+### Query view parameters
 
 Request
 ```
@@ -44,6 +44,12 @@ Result
     "vCar:Chassis"
 ]
 ```
+
+
+## Query view parameters
+
+API exposes a CRUD API for views. You can use this CRUD in order to create, modify or delete "views".
+
 ### Add new view
 
 Request
@@ -116,7 +122,7 @@ Result
     "vCar:Chassis"
 ]
 ```
-## Query parameters using view
+## Consuming Data using a view
 
 Example
 
