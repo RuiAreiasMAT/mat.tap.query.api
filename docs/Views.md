@@ -130,16 +130,44 @@ Result
 ```
 # Consuming Data using a View
 
-(High level explanation)
+Consuming data in views is as easy as replacing the list of parameters of the session in the Url Mask with the name of the View that we want to use.
+
+
 
 Example
 ```
-GET api/connections/SQLRACE01/sessions/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883/view/test4/10/data
+GET api/connections/SQLRACE01/sessions/016fa61e-33e2-7e85-1bc9-4ab56c668136
+/view/TestView 2/10/data?filter=vCar:Chassis;gt;326
 ```
 
 Result
-```
-(Result example here)
+```json
+[
+    {
+        "Time": "15:03:13.3810000",
+        "Values": {
+            "gLat:Chassis": 1.9057499999999998,
+            "NGear:Chassis": 8,
+            "vCar:Chassis": 326.445
+        }
+    },
+    {
+        "Time": "15:03:13.4810000",
+        "Values": {
+            "gLat:Chassis": 1.7905000000000004,
+            "NGear:Chassis": 8,
+            "vCar:Chassis": 326.481
+        }
+    },
+    {
+        "Time": "15:03:13.6810000",
+        "Values": {
+            "gLat:Chassis": 0.13,
+            "NGear:Chassis": 8,
+            "vCar:Chassis": 326.08000000000004
+        }
+    }
+]
 ```
 
 ## Multiple sessions query
