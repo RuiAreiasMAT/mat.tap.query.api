@@ -4,10 +4,10 @@
 
 ### Table of Contents
 [**Getting started**](/README.md)<br>
-[**Authorization**](Authorization.md)<br>
-[**Sessions**](Sessions.md)<br>
-[**Views**](Views.md)<br>
-[**Query Parameters**](QueryParameters.md)<br>
+[**Authorization**](/docs/Authorization.md)<br>
+[**Sessions**](/docs/Sessions.md)<br>
+[**Query Parameters**](/docs/QueryParameters.md)<br>
+[**Views**](/docs/Views.md)<br>
 
 
 # Getting started
