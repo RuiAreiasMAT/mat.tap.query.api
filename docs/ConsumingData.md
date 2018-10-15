@@ -34,7 +34,7 @@ Number of samples
 
 Easiest, fastest and probably best way to start is a query that returns
 a number of samples that fit all filters. Note: instead of parameters
-you can use [Views](https://confluence.mclaren.com/display/MATMDSG/Views).
+you can use [Views](/docs/Views.md).
 
 Mask
 
