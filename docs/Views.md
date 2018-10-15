@@ -142,7 +142,7 @@ Result
 (Result example here)
 ```
 
-# Multiple sessions query
+## Multiple sessions query
 
 All data views and parameters specifing is available with multi session
 query.
