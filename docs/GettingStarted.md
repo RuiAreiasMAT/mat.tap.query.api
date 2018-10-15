@@ -27,7 +27,7 @@
 Telemetry Query API could be connected to multiple sources of data. You can query these sources with the following endpoint:
 
 ```
-api/connections
+GET api/connections
 ```
 
 Result:
@@ -58,16 +58,16 @@ Result:
 Every connection provides a list of [Sessions](/docs/Sessions.md). You can query these [Sessions](/docs/Sessions.md) using the "FriendlyName" of the connection:
 
 ```
-api/connections/{connection friendly name}/sessions
+GET api/connections/{connection friendly name}/sessions
 ```
 Example:
 ```
-api/connections/Simulator/sessions
+GET api/connections/Simulator/sessions
 ```
 Paging is supported by this query. Page and page size could be specified. Default page size is 50 sessions in one page.
 
 ```
-api/connections/Simulator/sessions?page=1&pageSize=
+GET api/connections/Simulator/sessions?page=1&pageSize=
 ```
 Result:
 ```json
