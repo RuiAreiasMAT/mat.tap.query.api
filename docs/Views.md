@@ -66,16 +66,14 @@ Body
 ```
 ## Edit view
 
-```
 Request
+```
 PUT api/views/
 ```
-```
 Body
-```
 ```json
 {
-	"Id" : 2,
+    "Id" : 2,
     "Name": "TestView",
     "Description": "Some test parameters."
 }
@@ -83,7 +81,10 @@ Body
 
 ## Delete view
 
-(TODO)
+Request
+```
+DELETE api/views/2
+```
 
 ## Add view parameters
 
