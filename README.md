@@ -21,7 +21,7 @@
 		b. For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
 
 
-### Connections
+## Connections
 
 Query API could be connected to multiple sources of data.
 
@@ -51,7 +51,8 @@ Result
     }
 ]
 ```
-### Query connection
+
+## Query connection
 
 Every connection provides a list of sessions.
 
