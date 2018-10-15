@@ -55,7 +55,7 @@ Result:
 
 ## Query connection
 
-Every connection provides a list of sessions. You can query these Sessions using the "FriendlyName" of the connection:
+Every connection provides a list of [Sessions](/docs/Sessions.md). You can query these [Sessions](/docs/Sessions.md) using the "FriendlyName" of the connection:
 
 ```
 api/connections/{connection friendly name}/sessions
