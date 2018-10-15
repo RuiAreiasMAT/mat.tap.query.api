@@ -17,7 +17,7 @@ There are multiple endpoints available for query sessions information.
 (High level explanation here)
 
   
-Query sessions  
+Sessions  
 ==============  
 
 The "/sessions" endpoint give you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
@@ -82,7 +82,7 @@ Result
 ]
 ```
   
-Query live sessions  
+Live sessions  
 ===================  
 
 The "/sessions/live" endpoint give you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
