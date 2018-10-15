@@ -12,13 +12,10 @@
 Querying Metadata
 ========  
 
-There are multiple endpoints available for query sessions metadata information.  
-
-(High level explanation here)
-
+There are multiple endpoints available for query sessions metadata information. In this section we are going to explain the different endpoints available and what information we can obtain from them.
   
 Sessions  
-==============  
+========
 
 The "/sessions" endpoint give you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
 
@@ -39,14 +36,12 @@ Please note that some characters are not allowed in URL and therefore
 must be specified with percentage and symbol number. For example: & must  
 be replaced by %26.  
   
-Query  
-
+Mask
 ```
 GET api/connections/{connection friendly name}/sessions
 ```
 
 Example  
-
 ```
 GET api/connections/Simulator/sessions?items=Driver:KHA,Car:P1GTR&filter=LapsCount > 5 %26%26 TimeOfRecording >
 DateTime.Parse("2017-12-18")
@@ -103,7 +98,7 @@ Please note that some characters are not allowed in URL and therefore
 must be specified with percentage and symbol number. For example: & must  
 be replaced by %26.  
 
-Query  
+Mask
 ```
 GET api/connections/{connection friendly name}/sessions/live
 ```
@@ -116,11 +111,9 @@ GET api/connections/Simulator/sessions/live
 Items  
 =====
 
-(High level explanation)
+The "/sessions/{sessionKey}/items" endpoint give you access to a list **items** available for a specific session. (High level explanation of Items of the Session?)
 
-Query list of items in a session:  
-
-Query  
+Mask
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}/items
 ```
@@ -179,24 +172,19 @@ Result
 Laps  
 ====  
 
-(High level explanation)
-
-Query list of laps in session:  
+The "/sessions/{sessionKey}/laps" endpoint give you access to a list **laps** available for a specific session. (High level explanation of Laps of the Session)
   
-Query
-  
+Mask
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}/laps
 ```
   
-Query example  
-  
+Example 
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
 ```
   
 Result
-  
 ```json
 [
     {
@@ -234,18 +222,19 @@ Result
 ]
 ```
 
-
 Parameters  
 ==========  
 
-(High level explanation)
+The "/sessions/{sessionKey}/parameters" endpoint give you access to a list **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can finally consume in the section [Consuming Data](/docs/ConsumingData.md)
 
-Query list of parameters in a session:  
-  
-Query parameters  
-  
+Mask
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters
+```
+
+Example  
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
 ```
   
 Optional parameters  
@@ -256,31 +245,22 @@ Optional parameters
 | page | Index of page returned in result (0 is first page) | 3 |  
 | pageSize | Size of one page. | 50 |  
 | contains | Text filter | vCar |  
-  
-Query parameters example  
-  
-```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
-```
-  
+
 ### Paging  
-  
-Query parameters example  
-  
+
+Example  
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&amp;pageSize=50
 ```
   
 ### Filtering  
   
-Query parameters example  
-  
+Example 
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
 ```
   
 Result  
-  
 ```json
 {
         "Name": "vCar",
