@@ -39,13 +39,15 @@ you can use [Views](https://confluence.mclaren.com/display/MATMDSG/Views).
 Mask
 
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
+GET api/connections/{connection friendly name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
 ```
 
 Example
 
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
+/parameters/vCar/10/data/count?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -62,16 +64,18 @@ This type of view would return time ranges of result samples.
 Mask
 
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
+GET api/connections/{connection friendly name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
 ```
 
 Example
 
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/timeRanges?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
+/parameters/vCar/10/data/timeRanges?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
-Code Block 6 Result
+Result
 
 ```json
     {
@@ -109,13 +113,15 @@ This view will return data grouped to time ranges.
 Mask
 
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
+GET api/connections/{connection friendly name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
 ```
 
 Example
 
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
+/parameters/vCar/10/data/grouped?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -169,7 +175,8 @@ of data is paged. Default page size is 200 samples.
 Mask
 
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+GET api/connections/{connection friendly name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
 Note that some signals have a colon ( : ) in, so we use semicolons ( ; )
@@ -178,7 +185,8 @@ for the filtering.
 Example
 
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
+/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -272,7 +280,8 @@ api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...
 Example
 
 ```
-api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150
+api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a
+/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150
 ```
 
 Result
@@ -375,7 +384,9 @@ query.
 
 Example
 ```
-GET api/connections/SQLRACE01/sessions/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,92cbbae9-cd2c-aff8-f071-856bc116405a/view/test4/10/data/count?filter=vCar:Chassis;gt;300
+GET api/connections/SQLRACE01/sessions
+/26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,92cbbae9-cd2c-aff8-f071-856bc116405a
+/view/test4/10/data/count?filter=vCar:Chassis;gt;300
 ```
 
 Result
