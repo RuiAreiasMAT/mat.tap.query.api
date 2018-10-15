@@ -3,6 +3,7 @@
 (High level Introduction)
 
 ### Table of Contents
+[**Introduction**](/README.md)<br>
 [**Getting started**](/README.md)<br>
 [**Authorization**](/docs/Authorization.md)<br>
 [**Sessions**](/docs/Sessions.md)<br>
