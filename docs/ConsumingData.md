@@ -9,7 +9,7 @@
 - [**Views**](/docs/Views.md)<br>
 
 
-Query parameters data
+Consuming Data
 =====================
 
 There are multiple ways how to consume data and multiple ways how to
