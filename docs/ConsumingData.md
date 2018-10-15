@@ -273,14 +273,14 @@ All data queries could be done over multiple sessions.
 Mask
 
 ```
-api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}
+GET api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
 Example
 
 ```
-api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a
 /parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150
 ```
 
