@@ -55,7 +55,7 @@ Result:
 
 ## Query connection
 
-Every connection provides a list of sessions. 
+Every connection provides a list of sessions. You can query these Sessions using the "FriendlyName" of the connection:
 
 ```
 api/connections/{connection friendly name}/sessions
