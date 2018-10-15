@@ -13,10 +13,9 @@ Consuming Data
 =====================
 
 There are multiple ways how to consume data and multiple ways how to
-filter them. Parameters of the session could be specified in URL or by a view. (See
-[Views](/docs/Views.md)).
+filter them, all of them grouped in the endpoint **"/data"**. Parameters of the session could be specified in URL or by a view. (See [Views](/docs/Views.md)).
 
-Base url route
+Base url mask 
 ```
 GET api/connections/{connection friendly name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
@@ -44,11 +43,10 @@ Optional parameters
 | page           | Index of page returned in result (0 is first page)                                                  |               | 3           |
 | pageSize       | Size of one page.                                                                                   | 200           | 50          |
 
-
 Number of samples
 -----------------
 
-Easiest, fastest and probably best way to start is a query that returns
+Easiest and fastest way to start is a query that returns
 a number of samples that fit all filters. Note: instead of parameters
 you can use [Views](/docs/Views.md).
 
