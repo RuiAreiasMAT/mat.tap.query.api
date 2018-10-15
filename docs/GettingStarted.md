@@ -1,7 +1,5 @@
 # ![logo](/docs/branding.bmp) Telemetry Analytics API
 
-(High level Introduction)
-
 ### Table of Contents
 [**Introduction**](/README.md)<br>
 [**Getting started**](/GettingStarted.md)<br>
