@@ -12,8 +12,7 @@
 Consuming Data
 =====================
 
-There are multiple ways how to consume data and multiple ways how to
-filter them, all of them grouped in the common endpoint **"/data"**. Parameters of the session could be specified in URL or by a view. (See [Views](/docs/Views.md)).
+There are multiple ways how to consume data and multiple ways how to filter them, all of them grouped in the common endpoint **"/data"**. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
 
 ### Base url mask 
 
@@ -41,6 +40,94 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey}
 | filter         | Define parameters filter here.                                                                      |               | vCar;ge;300 |
 | page           | Index of page returned in result (0 is first page)                                                  |               | 3           |
 | pageSize       | Size of one page.                                                                                   | 200           | 50          |
+
+### Filter
+
+The "filter" is an optional parameter that we can use to filter when consuming data. There are multiple types of filters could be specified.
+
+#### Filter types
+
+| Shortcut | Full name             |
+|----------|-----------------------|
+| eq       | Equal                 |
+| gt       | Greater than          |
+| ge       | Greater than or equal |
+| lt       | Less than             |
+| le       | Less than or equal    |
+| ne       | Not equal             |
+
+#### Parameter filter
+
+Structure of one parameter filter instance is:
+
+Parameter filter url mask
+```
+{parameterName};{filterOperationShortcut};{value}
+```
+
+Parameter filter example
+```
+vCar;gt;300
+```
+
+Example of filtering values that have vCar between 100 and 150 kph. 
+Note that some signals have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
+
+Filter setting example
+```
+vCar:Chassis;gt;100,vCar:Chassis;le;150
+```
+
+Flat data
+---------
+
+This endpoint will return all samples flat across all time ranges. This view of data is paged. Default page size is 200 samples.
+
+Mask
+```
+GET api/connections/{connection friendly name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+```
+
+Example
+```
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
+/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+```
+
+Result
+```json
+    {
+        "Time": "11:19:45.0450000",
+        "Values": {
+            "vCar": 149.88
+        }
+    },
+    {
+        "Time": "11:19:45.0350000",
+        "Values": {
+            "vCar": 149.28
+        }
+    },
+    {
+        "Time": "11:19:45.0250000",
+        "Values": {
+            "vCar": 149.45
+        }
+    },
+    {
+        "Time": "11:19:45.0150000",
+        "Values": {
+            "vCar": 149.3
+        }
+    },
+    {
+        "Time": "11:19:45.0050000",
+        "Values": {
+            "vCar": 148.35
+        }
+    }
+```
 
 Number of samples
 -----------------
@@ -168,99 +255,6 @@ Result
             }
 		]
 }
-```
-
-Flat data
----------
-
-This view will return all samples flat across all time ranges. This view
-of data is paged. Default page size is 200 samples.
-
-Mask
-```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
-/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
-```
-
-Note that some signals have a colon ( : ) in, so we use semicolons ( ; )
-for the filtering.
-
-Example
-```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
-```
-
-Result
-```json
-    {
-        "Time": "11:19:45.0450000",
-        "Values": {
-            "vCar": 149.88
-        }
-    },
-    {
-        "Time": "11:19:45.0350000",
-        "Values": {
-            "vCar": 149.28
-        }
-    },
-    {
-        "Time": "11:19:45.0250000",
-        "Values": {
-            "vCar": 149.45
-        }
-    },
-    {
-        "Time": "11:19:45.0150000",
-        "Values": {
-            "vCar": 149.3
-        }
-    },
-    {
-        "Time": "11:19:45.0050000",
-        "Values": {
-            "vCar": 148.35
-        }
-    }
-```
-
-Filter
-------
-
-The filter is optional parameter where multiple types of filters could
-be specified.
-
-### Filter types
-
-| Shortcut | Full name             |
-|----------|-----------------------|
-| eq       | Equal                 |
-| gt       | Greater than          |
-| ge       | Greater than or equal |
-| lt       | Less than             |
-| le       | Less than or equal    |
-| ne       | Not equal             |
-
-### Parameter filter
-
-Structure of one parameter filter instance is:
-
-Parameter filter url mask
-```
-{parameterName};{filterOperationShortcut};{value}
-```
-
-Parameter filter example
-```
-vCar;gt;300
-```
-
-Example of filtering values that have vCar between 100 and 150 kph.
-
-Filter setting example
-```
-vCar:Chassis;gt;100,vCar:Chassis;le;150
 ```
 
 Multiple sessions data
