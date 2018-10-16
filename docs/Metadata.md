@@ -108,7 +108,7 @@ GET api/connections/Simulator/sessions/live
 Parameters  
 ==========  
 
-The "/sessions/{sessionKey}/parameters" endpoint give you access to a list **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can finally consume in the section [Consuming Data](/docs/ConsumingData.md)
+The "/sessions/{sessionKey}/parameters" endpoint give you access to a list **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can finally consume in the section [Consuming Data](/docs/ConsumingData.md).
 
 Mask
 ```
