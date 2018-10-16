@@ -193,7 +193,7 @@ Result
 Items  
 =====
 
-The "/sessions/{sessionKey}/items" endpoint give you access to a list **items** available for a specific session. (High level explanation of Items of the Session?)
+The "/sessions/{sessionKey}/items" endpoint give you access to a list **items** available for a specific session. Items is refering to the list of items details of a Session. 
 
 Mask
 ```
