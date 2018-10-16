@@ -10,7 +10,7 @@
 
 # Authorization
 
-This API uses a Token authentication. You use your user/password to ask the server for an access token. then you can include this access token in the header in all requests to the server.
+This API uses a Token authentication. You use your user/password to ask the server for an access token, then you can include this access token in the header in all requests to the server.
 
 ## Getting a token
 
