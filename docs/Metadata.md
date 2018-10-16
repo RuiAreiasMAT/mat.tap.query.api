@@ -133,7 +133,7 @@ Optional parameters
 
 Example  
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&amp;pageSize=50
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&pageSize=50
 ```
   
 ### Filtering  
