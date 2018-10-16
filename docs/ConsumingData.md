@@ -28,7 +28,7 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey}
 | connection     | Connection friendly name.   |               | SQLRACE01                                  |
 | sessionKey     | Session Key.               |               | 016fa61e-33e2-7e85-1bc9-4ab56c668136       |
 | parameters     | List of fields of the session to query data.  |               | vCar,NGear    |
-| frequency      | Frequency (Todo details of this parameter).  |               | 10            |
+| frequency      | Frequency of the results in Hz.  |               | 10            |
 
 ### Optional parameters
 
