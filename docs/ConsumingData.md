@@ -58,7 +58,7 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey}
 Example
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data/count?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -80,7 +80,7 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey}
 Example
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data/timeRanges?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+/parameters/vCar/10/data/timeRanges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -126,7 +126,7 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey}
 Example
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data/grouped?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+/parameters/vCar/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -188,7 +188,7 @@ for the filtering.
 Example
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar;gt;100,vCar;le;150
+/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -277,7 +277,7 @@ GET api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2
 Example
 ```
 GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a
-/parameters/vCar/10/data?from=11:15&amp;to=11:20&amp;filter=vCar:gt:100,vCar:le:150
+/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar:Chassis;gt;100,vCar:Chassis;le;150
 ```
 
 Result
