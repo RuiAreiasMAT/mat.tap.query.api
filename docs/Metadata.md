@@ -52,25 +52,23 @@ Result
         "Key": "7b7b910b-0b3a-4aff-b64f-54204d8ea863",
         "Identifier": "171218111334",
         "TimeOfRecording": "2017-12-18T11:13:34.3866611",
-        "TimeZone": "UTC",
         "SessionType": "Session",
         "StartTime": "12:46:02.0290000",
         "EndTime": "13:08:40.1190000",
         "LapsCount": 9,
         "Id": 1495,
-        "State": 0
+        "State": Historical
     },
     {
         "Key": "652618d1-995e-48dd-91c3-600447f59d9e",
         "Identifier": "171218115852",
         "TimeOfRecording": "2017-12-18T11:58:52.8114764",
-        "TimeZone": "UTC",
         "SessionType": "Session",
         "StartTime": "13:31:06.9320000",
         "EndTime": "13:42:57.5890000",
         "LapsCount": 6,
         "Id": 1497,
-        "State": 2
+        "State": Historical
     }
 ]
 ```
