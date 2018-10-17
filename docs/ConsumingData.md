@@ -77,7 +77,7 @@ Filter setting example
 vCar:Chassis;gt;100,vCar:Chassis;le;150
 ```
 
-Note that some signals have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
+Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
 
 Flat data
 ---------
