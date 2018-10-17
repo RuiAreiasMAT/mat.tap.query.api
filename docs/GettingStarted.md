@@ -56,7 +56,7 @@ Result:
 
 ## Where can I setup my connections?
 
-The connections that you can get from the endpoint ```api/connections``` are the connections that the API service has configured with a several SQLRace instances. If you are working locally with this API service you can configure these connections accessing to ATLAS 10 or SQLRace client. You can access to setup this connections from Atlas 10 going to Options -> Database Connection Manager:
+The SQLRace connections that you can get from the endpoint ```api/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections accessing to ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
 
 <img src="/docs/AtlasDbManager.png" alt="Atlas Database Manager" width="90%"/>
 
