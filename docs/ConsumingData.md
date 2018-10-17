@@ -17,7 +17,7 @@ There are multiple ways how to consume data and multiple ways how to filter them
 ### Base url mask 
 
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
+GET api/connections/{connection name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
@@ -86,7 +86,7 @@ The endpoint ```/data``` is the base endpoint for consuming data in the API. It 
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
+GET api/connections/{connection name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
@@ -138,7 +138,7 @@ a number of samples that fit all filters. Note: instead of parameters you can us
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
+GET api/connections/{connection name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
 ```
 
@@ -160,7 +160,7 @@ The ```/data/timeRanges``` endpoint returns time ranges of result samples. Note 
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
+GET api/connections/{connection name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
 ```
 
@@ -206,7 +206,7 @@ The ```/data/grouped``` endpoint will return data grouped to time ranges. Note t
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
+GET api/connections/{connection name}/sessions/{sessionKey}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
 ```
 
@@ -264,7 +264,7 @@ All data queries could be done over multiple sessions.
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}
+GET api/connections/{connection name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}
 /parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
