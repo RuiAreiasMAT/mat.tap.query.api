@@ -17,7 +17,7 @@ There are multiple endpoints available to query sessions metadata information. I
 Sessions  
 ========
 
-The "/sessions" endpoint give you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
+The ```/sessions``` endpoint give you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
 
 Optional parameters  
 -------------------  
@@ -76,7 +76,7 @@ Result
 Live sessions  
 ===================  
 
-The "/sessions/live" endpoint give you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
+The ```/sessions/live``` endpoint give you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
 
 Optional parameters  
 -------------------  
@@ -106,7 +106,7 @@ GET api/connections/Simulator/sessions/live
 Parameters  
 ==========  
 
-The "/sessions/{sessionKey}/parameters" endpoint give you access to a list **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can finally consume in the section [Consuming Data](/docs/ConsumingData.md).
+The ```/sessions/{sessionKey}/parameters``` endpoint give you access to a list **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can finally consume in the section [Consuming Data](/docs/ConsumingData.md).
 
 Mask
 ```
@@ -191,7 +191,7 @@ Result
 Details  
 =======
 
-The "/sessions/{sessionKey}/details" endpoint give you access to a list **details** available for a specific session.
+The ```/sessions/{sessionKey}/details``` endpoint give you access to a list **details** available for a specific session.
 
 Mask
 ```
@@ -252,7 +252,7 @@ Result
 Laps  
 ====  
 
-The "/sessions/{sessionKey}/laps" endpoint give you access to the information with the **laps** of specific session. 
+The ```/sessions/{sessionKey}/laps``` endpoint give you access to the information with the **laps** of specific session. 
   
 Mask
 ```
