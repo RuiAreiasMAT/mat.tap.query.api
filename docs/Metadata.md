@@ -12,7 +12,7 @@
 Querying Metadata
 ========  
 
-There are multiple endpoints available for query sessions metadata information. In this section we are going to explain the different endpoints available and what information we can obtain from them.
+There are multiple endpoints available to query sessions metadata information. In this section we are going to explain the different endpoints available and what information we can obtain from them.
   
 Sessions  
 ========
@@ -24,7 +24,7 @@ Optional parameters
   
 | Parameter name | Description | Default value | Example |  
 |----------------|-------------------------------------------------------------|---------------|---------------------------------------------------------------------------|  
-| items | This filter sessions by session items like driver, car etc. | | Driver:KHA,Car:P1GTR |  
+| details | This filter sessions by session details like driver, car etc. | | Driver:KHA,Car:P1GTR |  
 | filter | This filter returned query with expression. | | LapsCount &gt; 5 %26%26 TimeOfRecording &gt; DateTime.Parse("2017-12-18") |  
 | page | Index of page returned in result (0 is first page) | | 3 |  
 | pageSize | Size of one page. | 200 | 50 |  
@@ -36,7 +36,7 @@ Please note that some characters are not allowed in URL and therefore must be sp
   
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions
+GET api/connections/{connection name}/sessions
 ```
 
 Example  
@@ -96,7 +96,7 @@ Please note that some characters are not allowed in URL and therefore must be sp
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/live
+GET api/connections/{connection name}/sessions/live
 ```
   
 Example  
@@ -112,7 +112,7 @@ The "/sessions/{sessionKey}/parameters" endpoint give you access to a list **par
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/parameters
+GET api/connections/{connection name}/sessions/{sessionKey}/parameters
 ```
 
 Example  
@@ -190,19 +190,19 @@ Result
 ```
 
 
-Items  
-=====
+Details  
+=======
 
-The "/sessions/{sessionKey}/items" endpoint give you access to a list **items** available for a specific session. Items is refering to the list of items details of a Session. 
+The "/sessions/{sessionKey}/details" endpoint give you access to a list **details** available for a specific session.
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/items
+GET api/connections/{connection name}/sessions/{sessionKey}/details
 ```
   
 Example  
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/items
+GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
 ```
   
 Result  
@@ -258,7 +258,7 @@ The "/sessions/{sessionKey}/laps" endpoint give you access to the information wi
   
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}/laps
+GET api/connections/{connection name}/sessions/{sessionKey}/laps
 ```
   
 Example 
