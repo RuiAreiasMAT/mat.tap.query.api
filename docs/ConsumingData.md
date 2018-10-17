@@ -12,7 +12,7 @@
 Consuming Data
 =====================
 
-There are multiple ways how to consume data and multiple ways how to filter them, all of them grouped in the common endpoint **"/data"**. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
+There are multiple ways how to consume data and multiple ways how to filter them, all of them grouped in the common endpoint ```/data```. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
 
 ### Base url mask 
 
@@ -82,7 +82,7 @@ Note that some signals have a colon ( : ) in, so we use semicolons ( ; ) for the
 Flat data
 ---------
 
-The endpoint **"/data"** is the base endpoint for consuming data in the API. It will return all samples flat across all time ranges. This view of data is paged. Default page size is 200 samples.
+The endpoint ```/data``` is the base endpoint for consuming data in the API. It will return all samples flat across all time ranges. This view of data is paged. Default page size is 200 samples.
 
 Mask
 ```
@@ -133,7 +133,7 @@ Result
 Number of samples
 -----------------
 
-Easiest and fastest way to start working with a specific query of data is using the **"/data/count"** endpoint that returns
+Easiest and fastest way to start working with a specific query of data is using the ```/data/count``` endpoint that returns
 a number of samples that fit all filters. Note: instead of parameters you can use [Views](/docs/Views.md).
 
 Mask
@@ -156,7 +156,7 @@ Result
 Time ranges
 -----------
 
-The **"/data/timeRanges"** endpoint returns time ranges of result samples. Note that you can use all the parameters and filters used in the rest of endpoints.
+The ```/data/timeRanges``` endpoint returns time ranges of result samples. Note that you can use all the parameters and filters used in the rest of endpoints.
 
 Mask
 ```
@@ -202,7 +202,7 @@ Result
 Grouped data
 ------------
 
-The **"/data/grouped"** endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
+The ```/data/grouped``` endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
 
 Mask
 ```
