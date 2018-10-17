@@ -57,7 +57,7 @@ Result
         "EndTime": "13:08:40.1190000",
         "LapsCount": 9,
         "Id": 1495,
-        "State": Historical
+        "State": "Historical"
     },
     {
         "Key": "652618d1-995e-48dd-91c3-600447f59d9e",
@@ -68,7 +68,7 @@ Result
         "EndTime": "13:42:57.5890000",
         "LapsCount": 6,
         "Id": 1497,
-        "State": Historical
+        "State": "Historical"
     }
 ]
 ```
