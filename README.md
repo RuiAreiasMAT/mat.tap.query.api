@@ -15,6 +15,6 @@ TAPI stands for Telemetry Analytics Platform. It is platform-independent access 
 
 One instance of TAPI aggregates multiple storage instances. REST API provides access to session metadata, session telemetry data but also live models results.
 
-[](/docs/TapiDiagram.png)
+![](/docs/TapiDiagram.png)
 
 
