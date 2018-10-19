@@ -14,11 +14,13 @@ This API uses a Token authentication. You use your user/password to ask the serv
 
 ## Getting a token
 
-To ask for a password you have to use the following endpoint filling up the parameters ```username```, ```password``` and ```grant_type``` in the body of the request. Note that default ```username``` and ```password``` in a new installation of the API are **"admin"**, **"admin"** respectively. Field ```grant_type``` is always the same value **"password"**:
+To ask for a password you have to use the following endpoint filling up the parameters ```username```, ```password``` and ```grant_type``` in the body of the request:
 
 ```
 GET /token
 ```
+
+Note that default ```username``` and ```password``` in a new installation of the API are **"admin"**, **"admin"** respectively. Field ```grant_type``` is always the same value **"password"**.
 
 Following image shows an example of this type of request:
 
