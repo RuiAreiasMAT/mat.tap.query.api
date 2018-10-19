@@ -119,7 +119,7 @@ Telemetry Analytics API natively support the **Open API** (formerly Swagger) API
 http://hostname:port/swagger
 ```
 
-
+![](/docs/SwaggerUI.png)
 
 Swagger is a specification for documenting REST API. It specifies the format (URL, method, and representation) to describe REST web services. 
 
