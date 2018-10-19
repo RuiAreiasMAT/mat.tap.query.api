@@ -113,10 +113,10 @@ Result:
 
 ## Swagger
 
-Telemetry Analytics API natively support the **Open API** (formerly Swagger) API documentation format. It also integrates a version of **Swagger UI**, a nice tool to display the API documentation in a user friendly way. You can access to Swagger UI implementation using the following url from a web browser:
+Telemetry Analytics API natively support the **Open API** (formerly Swagger) API documentation format. It also integrates a version of **Swagger UI**, a nice tool to display and test all the API endpoints in a user friendly way. You can access to Swagger UI implementation using the following url from a web browser:
 
 ```
-http://hostname:port/swagger
+http://{hostname}:{port}/swagger
 ```
 
 ![](/docs/SwaggerUI.png)
@@ -125,4 +125,53 @@ Swagger is a specification for documenting REST API. It specifies the format (UR
 
 Swagger is a language-agnostic specification, with its declarative resource specification, clients can easily understand and consume services without any prior knowledge of server implementation or access to the server code.
 
+You can query or consume an updated Open API / Swagger specification of the API accessing to the following url of the server:
+
+```
+http://{hostname}:{port}/swagger/docs/v1
+```
+
+Example
+
+```json
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Telemetry Analytics API"
+  },
+  "host": "127.0.0.1:8011",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/connections": {
+      "get": {
+        "tags": [
+          "Connections"
+        ],
+        "summary": "Gets page of configured storage connections.",
+        "operationId": "Connections_GetAllConnections",
+        "consumes": [
+          
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+...
+```
 
