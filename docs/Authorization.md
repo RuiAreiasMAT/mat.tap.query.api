@@ -36,5 +36,18 @@ After getting a token from the server you have to use it in each request of the 
 
 ## Authorization using Swagger UI
 
-If you are using Swagger UI for test the API you can ask for a token accessing to the endpoint **Authentication** in the own interface of the Swagger UI main page. You only need to fill up the fields ```username``` and ```password``` and press the button **"Try it out"**:
+If you are using Swagger UI for test the API you can ask for a token accessing to the  **Authentication** controller in the own interface of the Swagger UI main page. You only need to fill up the fields ```username``` and ```password``` and press the button **"Try it out"**:
+
+![](/docs/SwaggerAuthentication.png)
+
+The resulting field ```access_token``` gives you the bearer token that you must use in the rest of endpoints of the Swagger UI. All the endpoints that need authorization ask you for filling up an additional field named ```Authorization```. You must to put in this field the keyword **"bearer"** followed by a space and the **Token** string provided for the previous call to the **Authentication** controller.
+
+Following images shows an example of how to use it:
+
+![](/docs/SwaggerAuthorization.png)
+
+
+
+
+
 
