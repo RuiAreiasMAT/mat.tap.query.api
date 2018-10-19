@@ -23,7 +23,7 @@
 
 3. Use Swagger UI.
 
-	- An alternative way to test this API is using Swagger UI that it's embedded in the own implementation of this service. You can check more information about in the following [Swagger](## Swagger) section of this documentation.
+	- An alternative way to test this API is using Swagger UI that it's embedded in the own implementation of this service. You can check more information about in the following [Swagger](#swagger) section of this documentation.
 	
 ## Connections
 
