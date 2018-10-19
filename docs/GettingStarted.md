@@ -21,7 +21,10 @@
 	- For an example of this see the [Authorization](Authorization.md) page (but change the username and password)
 	- For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
 
+3. Use Swagger UI.
 
+	- An alternative way to test this API is using Swagger UI that it's embedded in the own implementation of this service. You can check more information about in the following [Swagger](## Swagger) section of this documentation.
+	
 ## Connections
 
 Telemetry Query API could be connected to multiple sources of data. You can query these sources with the following endpoint:
@@ -107,3 +110,19 @@ Result:
         "State": 2
     }
 ```
+
+## Swagger
+
+Telemetry Analytics API natively support the Open API (formerly Swagger) API documentation format. It also integrates a version of Swagger UI, a nice tool to display the API documentation in a user friendly way. You can access to Swagger UI implementation using the following url from a web browser:
+
+```
+http://hostname:port/swagger
+```
+
+
+
+Swagger is a specification for documenting REST API. It specifies the format (URL, method, and representation) to describe REST web services. 
+
+Swagger is a language-agnostic specification, with its declarative resource specification, clients can easily understand and consume services without any prior knowledge of server implementation or access to the server code.
+
+
