@@ -113,7 +113,7 @@ Result:
 
 ## Swagger
 
-Telemetry Analytics API natively support the Open API (formerly Swagger) API documentation format. It also integrates a version of Swagger UI, a nice tool to display the API documentation in a user friendly way. You can access to Swagger UI implementation using the following url from a web browser:
+Telemetry Analytics API natively support the **Open API** (formerly Swagger) API documentation format. It also integrates a version of **Swagger UI**, a nice tool to display the API documentation in a user friendly way. You can access to Swagger UI implementation using the following url from a web browser:
 
 ```
 http://hostname:port/swagger
