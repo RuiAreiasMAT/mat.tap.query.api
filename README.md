@@ -1,5 +1,7 @@
 # ![logo](/docs/branding.bmp) Telemetry Analytics API
 
+![Build Status](https://mat-ocs.visualstudio.com/Telemetry%20Analytics%20Platform/_apis/build/status/MAT.TAP.TelemetryAnalytics.API?branchName=develop)
+
 ### Table of Contents
 - [**Introduction**](/README.md)<br>
 - [**Getting started**](/docs/GettingStarted.md)<br>
