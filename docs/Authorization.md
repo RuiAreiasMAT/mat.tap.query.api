@@ -14,7 +14,7 @@ This API uses a Token authentication. You use your user/password to ask the serv
 
 ## Getting a token
 
-To ask for a password you have to use the following endpoint filling up the parameters ```username```, ```password``` and ```grant_type``` in the body of the request:
+To ask for a token you have to use the following endpoint filling up the parameters ```username```, ```password``` and ```grant_type``` in the body of the request:
 
 ```
 GET /token
@@ -34,4 +34,7 @@ After getting a token from the server you have to use it in each request of the 
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
+## Authorization using Swagger UI
+
+If you are using Swagger UI for test the API you can ask for a token accessing to the endpoint **Authentication** in the own interface of the Swagger UI main page. You only need to fill up the fields ```username``` and ```password``` and press the button **"Try it out"**:
 
