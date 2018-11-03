@@ -25,7 +25,7 @@
 
 3. Use Swagger UI.
 
-	- An alternative way to test this API is using Swagger UI that it's embedded in the own implementation of the server. You can check more information about it in the following [Swagger](#swagger) section of this documentation.
+	- An alternative way to test this API is using the embedded Swagger UI that can be found by navigating to the home path of the API server using a web browser. You can check more information about it in the following [Swagger](#swagger) section of this documentation.
 	
 ## Connections
 
