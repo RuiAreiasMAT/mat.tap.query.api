@@ -104,7 +104,7 @@ Result:
 - `identifier` is string that uniquely identifies the connection.
 - `sqlServerConnectionString` is the connection details of the database that stores the session metadata.
 
-You can also update and delete existing connections using `PUT` and `DELETE` requests. Please refer to the [Swagger UI](#swagger) for more information.
+You can also update and delete existing connections using `PUT` and `DELETE` requests based on the connection identifier. Please refer to the [Swagger UI](#swagger) for more information.
 
 ## Query connection
 
