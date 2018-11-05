@@ -14,7 +14,7 @@
 Consuming Data
 =====================
 
-There are multiple ways how to consume data and multiple ways how to filter them, all of them grouped in the common endpoint ```/data```. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
+There are multiple ways to consume data and multiple ways to filter them, all of them grouped under the common endpoint ```/data```. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
 
 ### Base url masks
 
@@ -32,7 +32,7 @@ GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{paramete
 
 Please note that you can only query one parameter at a time from InfluxDb at the moment. Support for multiple parameters is in the roadmap. 
 
-All the resources under this base url mask are also available for SqlRace data. In addition, for SqlRace, you have the option to query data using the below base url mask which has support for querying data from multiple sessions and parameters.
+All the resources under this base url mask are also available for SqlRace data. In addition, for SqlRace, you have the option to query data using the below base url mask which has support for querying data from multiple sessions and parameters. Readon for concrete examples.
 
 For SqlRace data: 
 
@@ -53,12 +53,14 @@ GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{paramete
 
 | Parameter name | Description                                                                                         | Default value | Example     |
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
-| from           | This filter data in session by time. All data returned would have time stamp after specified time.  |               | 10:34       |
-| to             | This filter data in session by time. All data returned would have time stamp before specified time. |               | 10:50       |
-| lap            | This filter data for specified lap in session.                                                      |               | 3           |
-| filter         | Define parameters filter here.                                                                      |               | vCar;ge;300 |
-| page           | Index of page returned in result (0 is first page)                                                  |               | 3           |
-| pageSize       | Size of one page.                                                                                   | 200           | 50          |
+| from           | This filter data in session by time. All data returned would have time stamp after specified time.  | `null` 
+| 10:34          |
+| to             | This filter data in session by time. All data returned would have time stamp before specified time. | `null`
+| 10:50          |
+| lap            | This filter data for specified lap in session.                                                      | `null`   | 3              |
+| filter         | Define parameters to filter here.                                                                   | `null`   | vCar;ge;300    |
+| page           | Index of page returned in result (0 is first page)                                                  |   0      | 3              |
+| pageSize       | Size of one page.                                                                                   | 200      | 50             |
 
 ### Filter
 
