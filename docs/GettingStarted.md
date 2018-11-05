@@ -69,7 +69,7 @@ The SQLRace connections that you can get from the endpoint ```api/connections```
 
 ### InfluxDb Connections
 
-The InfluxDb connections that you can get from the endpoint ```api/connections``` depends on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings needs to be created in the `api/connections` before querying.
+The InfluxDb connections that you can get from the endpoint ```api/connections``` depend on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings needs to be created in the `api/connections` before querying.
 
 You can create a new connection using `POST` request:
 
@@ -99,8 +99,12 @@ Result:
 }
 ```
 
-You can also update and delete existing connections using `PUT` and `DELETE` requests. Please refer to the [Swagger UI](#swagger) for more information.
+- `influxDbUrl` is the address of the InfluxDb instance used to store data.
+- `measurementName` is the name of the InfluxDb database (timeseries). Usually, this is the same as the topic name of the stream.
+- `identifier` is string that uniquely identifies the connection.
+- `sqlServerConnectionString` is the connection details of the database that stores the session metadata.
 
+You can also update and delete existing connections using `PUT` and `DELETE` requests. Please refer to the [Swagger UI](#swagger) for more information.
 
 ## Query connection
 
