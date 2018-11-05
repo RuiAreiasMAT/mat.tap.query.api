@@ -61,9 +61,45 @@ Result:
 
 ## Where can I setup my connections?
 
+### SqlRace Connections
+
 The SQLRace connections that you can get from the endpoint ```api/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections accessing to ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
 
 <img src="/docs/AtlasDbManager.png" alt="Atlas Database Manager" width="90%"/>
+
+### InfluxDb Connections
+
+The InfluxDb connections that you can get from the endpoint ```api/connections``` depends on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings needs to be created in the `api/connections` before querying.
+
+You can create a new connection using `POST` request:
+
+```
+POST api/connections
+```
+
+Request:
+
+```
+{
+  "influxDbUrl": "http://10.228.4.17:8086",
+  "measurementName": "Marple",
+  "identifier": "Season2017",
+  "sqlServerConnectionString": "server=10.228.5.4\\SQLEXPRESS;Initial Catalog=TelemetryAnalytics.Api.Sessions;User Id=test;Password=test;"
+}
+```
+
+Result:
+
+```
+{
+  "influxDbUrl": "http://10.228.4.17:8086",
+  "measurementName": "Marple",
+  "identifier": "Season2017",
+  "sqlServerConnectionString": "server=10.228.5.4\\SQLEXPRESS;Initial Catalog=TelemetryAnalytics.Api.Sessions;User Id=test;Password=test;"
+}
+```
+
+You can also update and delete existing connections using `PUT` and `DELETE` requests. Please refer to the [Swagger UI](#swagger) for more information.
 
 
 ## Query connection
