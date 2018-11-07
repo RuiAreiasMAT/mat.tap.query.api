@@ -54,7 +54,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 | from           | Filters data in session by time. All data returned would have time stamp after specified time.      |    `null`     | 10:34       |
 | to             | Filters data in session by time. All data returned would have time stamp before specified time.     |    `null`     | 10:50       |
 | lap            | Filters data for specified lap in session.                                                          |    `null`     | 3           |
-| filter         | Generic filter expression describing filters.                                                       |    `null`     | vCar;ge;300 |
+| filter         | Generic filter expression describing filters.                                                       |    `null`     | value;ge;300 |
 | page           | Index of page returned in result (0 is first page)                                                  |      0        | 3           |
 | pageSize       | Size of one page.                                                                                   |     200       | 50          |
 
@@ -68,41 +68,39 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 
 Example
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=value;gt;100,value;le;150
 ```
 
 Result
 ```json
     {
-        "Time": "11:19:45.0450000",
-        "Values": {
-            "vCar": 149.88
-        }
-    },
-    {
-        "Time": "11:19:45.0350000",
-        "Values": {
-            "vCar": 149.28
-        }
-    },
-    {
-        "Time": "11:19:45.0250000",
-        "Values": {
-            "vCar": 149.45
-        }
-    },
-    {
-        "Time": "11:19:45.0150000",
-        "Values": {
-            "vCar": 149.3
-        }
-    },
-    {
-        "Time": "11:19:45.0050000",
-        "Values": {
-            "vCar": 148.35
-        }
-    }
+    "time": "14:50:51.4000000",
+    "value": 279.50857142857143
+  },
+  {
+    "time": "14:50:51.5000000",
+    "value": 280.149
+  },
+  {
+    "time": "14:50:51.6000000",
+    "value": 280.981
+  },
+  {
+    "time": "14:50:51.7000000",
+    "value": 281.859
+  },
+  {
+    "time": "14:50:51.8000000",
+    "value": 282.61400000000003
+  },
+  {
+    "time": "14:50:51.9000000",
+    "value": 283.427
+  },
+  {
+    "time": "14:50:52",
+    "value": 284.20899999999995
+  }
 ```
 
 #### Query Parameter Data Count
@@ -114,7 +112,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 
 Example
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=value;gt;100,value;le;150
 ```
 
 Result
