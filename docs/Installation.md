@@ -65,7 +65,7 @@ sudo systemctl stop MAT.TAP.TelemetryAnalytics.API.service
 sudo systemctl start MAT.TAP.TelemetryAnalytics.API.service
 ```
 
-or configure your config in /opt/MAT.TAP.TelemetryAnalytics.API/appsettings.Production.jso
+or configure your config in /opt/MAT.TAP.TelemetryAnalytics.API/appsettings.Production.json
 
 #### Basic usage
 
