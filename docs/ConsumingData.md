@@ -16,13 +16,13 @@ Consuming Data
 
 Uris for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources are currently only supports SqlRace as the backing storage.
 
-The main difference in the functionality of the two endpoints depends on the backing storage used. If the storage is SqlRace, you can query multipe parameters at a time with both `/data` and `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also gives access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
+The main difference in the functionality of the two endpoints depends on the backing storage used. If the storage is SqlRace, you can query multipe parameters at a time with both `/data` and `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
 
 ### Base url masks
 
 #### Data resources
 
-For resources under `/data` path, two url masks are available for querying data. One to wuery with the frequecy of data specified and one without. 
+For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. 
 
 Query with frequency:
 
@@ -102,12 +102,14 @@ vCar:Chassis;gt;100,vCar:Chassis;le;150
 
 Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
 
-There are four main API resources:
+### Querying data
 
-- Query flat data (available for both SqlRace and InfluxDb under `/data` and available for only SqlRace under `/table/{frequency}/data`)
-- Query data count (available for both SqlRace and InfluxDb under `/data/count` and available for only SqlRace under `/table/{frequency}/data/count`)
-- Query grouped data (available for only SqlRace under `/table/{frequency}/data/grouped`)
-- Query time ranges (available for only SqlRace under `/table/{frequency}/data/timeranges`)
+There are four main API resources for querying data:
+
+- Query flat data (available for both SqlRace and InfluxDb under `/data` and available only for SqlRace under `/table/{frequency}/data`)
+- Query number of samples (available for both SqlRace and InfluxDb under `/data/count` and available only for SqlRace under `/table/{frequency}/data/count`)
+- Query time ranges (available only for SqlRace under `/table/{frequency}/data/timeranges`)
+- Query grouped data (available only for SqlRace under `/table/{frequency}/data/grouped`)
 
 Descriptions and examples of the above resources are listed below.
 
@@ -127,6 +129,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 ```
 
 Example
+
 ```
 GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
