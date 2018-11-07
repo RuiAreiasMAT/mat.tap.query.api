@@ -32,7 +32,7 @@ Following image shows an example of this type of request for the embedded OAuth 
 
 Following image shows an example of this type of request for the Identity Server using InfluxDb as storage:
 
-<img src="AuthorizationInfluxAPI.png" alt="drawing" width="80%"/>
+<img src="AuthorizationInflux.png" alt="drawing" width="80%"/>
 
 Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON.
 
