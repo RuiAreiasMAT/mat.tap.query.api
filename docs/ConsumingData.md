@@ -16,30 +16,34 @@
 Consuming Data
 =====================
 
-There are multiple ways to consume data and multiple ways to filter them, all of them grouped under the common endpoint ```/data```. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
+Uris for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources are currently only supports SqlRace as the backing storage.
+
+The main difference in the functionality of the two endpoints depends on the backing storage used. If the storage is SqlRace, you can query multipe parameters at a time with both `/data` and `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
 
 ### Base url masks
 
-For InfluxDb data for querying with frequency specified:
+#### Data resources
+
+For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. 
+
+Query with frequency:
 
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
 ```
 
 And querying without specifying frequency:
 
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/data
 ```
 
-Please note that you can only query one parameter at a time from InfluxDb at the moment. Support for multiple parameters is in the roadmap. 
+#### Table data resources
 
-All the resources under this base url mask are also available for SqlRace data. In addition, for SqlRace, you have the option to query data using the below base url mask (`/table/data`) which has support for querying data from multiple sessions and parameters. Readon for concrete examples.
-
-For SqlRace data: 
+For resources under `/table/{frequency}/data`:
 
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
 ```
 
 ### Url parameters
@@ -100,19 +104,36 @@ vCar:Chassis;gt;100,vCar:Chassis;le;150
 
 Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
 
+### Querying data
+
+There are four main API resources for querying data:
+
+- Query flat data (available for both SqlRace and InfluxDb under `/data` and available only for SqlRace under `/table/{frequency}/data`)
+- Query number of samples (available for both SqlRace and InfluxDb under `/data/count` and available only for SqlRace under `/table/{frequency}/data/count`)
+- Query time ranges (available only for SqlRace under `/table/{frequency}/data/timeranges`)
+- Query grouped data (available only for SqlRace under `/table/{frequency}/data/grouped`)
+
+Descriptions and examples of the above resources are listed below.
+
 Flat data
 ---------
 
 The endpoint ```/data``` is the base endpoint for consuming data in the API. It will return all samples flat across all time ranges. This view of data is paged. Default page size is 200 samples.
 
 Mask
+
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+```
+
+```
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
 ```
 
 Example
+
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -152,17 +173,21 @@ Result
 Number of samples
 -----------------
 
-Easiest and fastest way to start working with a specific query of data is using the ```/data/count``` endpoint that returns
-the number of samples that fit all filters. Note: instead of parameters you can use [Views](/docs/Views.md).
+Easiest and fastest way to start working with a specific query of data is using the ```/data/count``` endpoint that returns the number of samples that fit all filters.
 
 Mask
+
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
+```
+
+```
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data/count
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -173,18 +198,18 @@ Result
 Time ranges
 -----------
 
-The ```/data/timeRanges``` endpoint returns time ranges of result samples. Note that you can use all the parameters and filters used in the rest of endpoints.
+The ```/table/{frequency}/data/timeranges``` endpoint returns time ranges of result samples. Note that you can use all the parameters and filters used in the rest of endpoints.
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}
-/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}
+/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data/timeranges
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data/timeRanges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
+/parameters/vCar/table/10/data/timeRanges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -219,16 +244,16 @@ Result
 Grouped data
 ------------
 
-The ```/data/grouped``` endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
+The ```/table/{frequency}/data/grouped``` endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data/grouped
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/table/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -279,7 +304,7 @@ All data queries could be done over multiple sessions for SqlRace data (InfluxDb
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
 ```
 
 Example
