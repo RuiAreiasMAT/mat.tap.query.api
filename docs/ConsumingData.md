@@ -18,12 +18,15 @@ Consuming Data
 
 URIs for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources are currently only supports SqlRace as the backing storage.
 
-The main difference in the functionality of the two endpoints is that you can query multipe parameters at a time with `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
+The main difference in the functionality of the two endpoints is that you can query multipe parameters over multiple sessions at a time with `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
 
+## Consuming Parameter Data
+
+You can consume parameter data using `/data` endpoint. For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. 
 
 ### Base url masks
 
-For InfluxDb data for querying with frequency specified:
+Query with frequency:
 
 ```
 GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
@@ -32,17 +35,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 And querying without specifying frequency:
 
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
-```
-
-Please note that you can only query one parameter at a time from InfluxDb at the moment. Support for multiple parameters is in the roadmap. 
-
-All the resources under this base url mask are also available for SqlRace data. In addition, for SqlRace, you have the option to query data using the below base url mask (`/table/data`) which has support for querying data from multiple sessions and parameters. Readon for concrete examples.
-
-For SqlRace data: 
-
-```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/data
 ```
 
 ### Url parameters
@@ -51,7 +44,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
 | connection     | Connection friendly name.   |               | SQLRACE01                                  |
 | sessionKey     | Session Key.               |               | 016fa61e-33e2-7e85-1bc9-4ab56c668136       |
-| parameters     | List of fields of the session to query data.  |               | vCar,NGear    |
+| parameter      | Name of the parameter.  |               | vCar   |
 | frequency      | Frequency of the results in Hz.  |               | 10            |
 
 ### Optional parameters
@@ -65,52 +58,12 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 | page           | Index of page returned in result (0 is first page)                                                  |      0        | 3           |
 | pageSize       | Size of one page.                                                                                   |     200       | 50          |
 
-### Filter
 
-Filter is an optional parameter that we can use to filter when consuming data. There are multiple types of filters could be specified.
-
-#### Filter types
-
-| Shortcut | Full name             |
-|----------|-----------------------|
-| eq       | Equal                 |
-| gt       | Greater than          |
-| ge       | Greater than or equal |
-| lt       | Less than             |
-| le       | Less than or equal    |
-| ne       | Not equal             |
-
-#### Parameter filter
-
-Structure of one parameter filter instance is:
-
-Parameter filter url mask
-```
-{parameterName};{filterOperationShortcut};{value}
-```
-
-Parameter filter example
-```
-vCar;gt;300
-```
-
-Example of filtering values that have vCar between 100 and 150 kph. 
-
-Filter setting example
-```
-vCar:Chassis;gt;100,vCar:Chassis;le;150
-```
-
-Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
-
-Flat data
----------
-
-The endpoint ```/data``` is the base endpoint for consuming data in the API. It will return all samples flat across all time ranges. This view of data is paged. Default page size is 200 samples.
+#### Query Parameter Data
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
 ```
 
 Example
@@ -152,15 +105,11 @@ Result
     }
 ```
 
-Number of samples
------------------
-
-Easiest and fastest way to start working with a specific query of data is using the ```/data/count``` endpoint that returns
-the number of samples that fit all filters. Note: instead of parameters you can use [Views](/docs/Views.md).
+#### Query Parameter Data Count
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameterName}/{frequency}/data/count
 ```
 
 Example
@@ -173,19 +122,52 @@ Result
 5646
 ```
 
-Time ranges
------------
+## Parameters Table
 
-The ```/data/timeRanges``` endpoint returns time ranges of result samples. Note that you can use all the parameters and filters used in the rest of endpoints.
+You can consume parameter table data using `/table/{frequency}/data` endpoint.
+
+### Base url mask
+
+```
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey_1,...,sessionKey_n}/parameters/{parameter_1,...,parameter_n}/table/{frequency}/data
+```
+
+#### Query Parameter Table Data
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey_1,...,sessionKey_n}/parameters/{parameter_1,...,parameter_n}/table/{frequency}/data
 ```
 
 Example
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/timeRanges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,83ceba51-83d1-43ec-bb0a-10cdv685ca47c/parameters/vCar,BDownshiftRequested/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+```
+
+#### Query Parameter Table Data Count
+
+Mask
+```
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey_1,...,sessionKey_n}/parameters/{parameterName_1,...,parameterName_n}/table/{frequency}/data/count
+```
+
+Example
+```
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,83ceba51-83d1-43ec-bb0a-10cdv685ca47c/parameters/vCar,BDownshiftRequested/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+```
+
+#### Query Time ranges
+
+The ```/table/{frequency}/data/timeranges``` endpoint returns time ranges of result samples. Note that you can use all the parameters and filters used in the rest of endpoints.
+
+Mask
+```
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey_1,...,sessionKey_n}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data/timeranges
+```
+
+Example
+```
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/table/10/data/timeranges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -217,19 +199,18 @@ Result
     }
 ```    
 
-Grouped data
-------------
+#### Grouped data
 
-The ```/data/grouped``` endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
+The ```/table/{frequency}/data/grouped``` endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey1,...,sessionKey_n}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data/grouped
 ```
 
 Example
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/table/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -273,8 +254,46 @@ Result
 }
 ```
 
-Multiple sessions data
-----------------------
+### More on filtering
+
+Filter is an optional parameter that we can use to filter when consuming data. There are multiple types of filters could be specified.
+
+#### Filter types
+
+| Shortcut | Full name             |
+|----------|-----------------------|
+| eq       | Equal                 |
+| gt       | Greater than          |
+| ge       | Greater than or equal |
+| lt       | Less than             |
+| le       | Less than or equal    |
+| ne       | Not equal             |
+
+#### Parameter filter
+
+Structure of one parameter filter instance is:
+
+Parameter filter url mask
+```
+{parameterName};{filterOperationShortcut};{value}
+```
+
+Parameter filter example
+```
+vCar;gt;300
+```
+
+Example of filtering values that have vCar between 100 and 150 kph. 
+
+Filter setting example
+```
+vCar:Chassis;gt;100,vCar:Chassis;le;150
+```
+
+Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for the filtering.
+
+
+### More on querying multiple sessions table data
 
 All data queries could be done over multiple sessions for SqlRace data (InfluxDb data support for this feature is in the roadmap).
 
