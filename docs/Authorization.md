@@ -4,7 +4,9 @@
 
 ### Table of Contents
 - [**Introduction**](/README.md)<br>
+- [**Installation**](/docs/Installation.md)<br>
 - [**Getting started**](/docs/GettingStarted.md)<br>
+- [**Identity Server**](/docs/IdentityServer.md)<br>
 - [**Authorization**](/docs/Authorization.md)<br>
 - [**Querying Metadata**](/docs/Metadata.md)<br>
 - [**Consuming Data**](/docs/ConsumingData.md)<br>
@@ -16,13 +18,13 @@ This API uses a Token authentication. You use your user/password to ask the serv
 
 ## Getting a token
 
-To ask for a token you have to use the following endpoint filling up the parameters ```username```, ```password``` and ```grant_type``` in the body of the request:
+To ask for a token you have to use the following endpoint filling up the parameters ```username```, ```password```, ```grant_type``` and ```client_id``` in the body of the request:
 
 ```
 GET /token
 ```
 
-Note that default ```username``` and ```password``` in a new installation of the API are **"admin"**, **"admin"** respectively. Field ```grant_type``` is always the same value **"password"**.
+Note that default ```username```, ```password``` and ```client_id``` in a new installation of the API are **"admin"**, **"admin"** and **"default.tapi.client"** respectively. Field ```grant_type``` is always the same value **"password"**.
 
 Following image shows an example of this type of request:
 
