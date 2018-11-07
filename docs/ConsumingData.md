@@ -124,6 +124,8 @@ Result
 
 You can consume parameter table data using `/table/{frequency}/data` endpoint.
 
+**Currently not supported by InfluxDb.**
+
 ### Base url mask
 
 ```
