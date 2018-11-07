@@ -14,27 +14,31 @@
 
 # Authorization
 
-This API uses a Token authentication. You use your user/password to ask the server for an access token, then you can include this access token in the header in all requests to the server.
+This API uses a Token authentication. You use your user/password to ask the server for an access token, then you can include this access token in the header in all requests to the server. Please note that for SqlRace, OAuth server is embedded. Hence, you can use the same API to get the access token as TAPI. However, for InfluxDb API, OAuth server is called Identity Server and is deployed as a separate API. Please refer to the Swagger UI for [Identity Server](/docs/IdentityServer.md) to test the token endpoint. 
 
 ## Getting a token
 
-To ask for a token you have to use the following endpoint filling up the parameters ```username```, ```password```, ```grant_type``` and ```client_id``` in the body of the request:
+To ask for a token you have to use the following endpoint filling up the parameters `username`, `password` and `grant_type` (and `client_id` for Identity Server) in the body of the request:
 
 ```
 GET /token
 ```
 
-Note that default ```username```, ```password``` and ```client_id``` in a new installation of the API are **"admin"**, **"admin"** and **"default.tapi.client"** respectively. Field ```grant_type``` is always the same value **"password"**.
+Note that default ```username```, ```password``` and ```client_id``` in a new installation of the API are **"admin"**, **"admin"** and **"default.tapi.client"** respectively. Field ```grant_type``` is always the same value as **"password"**.
 
-Following image shows an example of this type of request:
+Following image shows an example of this type of request for the embedded OAuth Server:
 
 <img src="Authorization1.png" alt="drawing" width="80%"/>
 
-Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON (1 day here).
+Following image shows an example of this type of request for the Identity Server using InfluxDb as storage:
+
+<img src="AuthorizationInfluxAPI.png" alt="drawing" width="80%"/>
+
+Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON.
 
 ## Authorization of request
 
-After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The parameter name to use is ```Authorization``` and the value is keyword **"bearer"** followed by a space and the **Token** string.
+After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The parameter name to use is ```Authorization``` and the value is keyword **"Bearer"** followed by a space and the **Token** string.
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
