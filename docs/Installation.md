@@ -61,8 +61,8 @@ journalctl --unit MAT.TAP.TelemetryAnalytics.API.service --follow -n 100
 or start and stop by 
 
 ```
-sudo systemctl stop MAT.TAP.TelemetryAnalytics.API
-sudo systemctl start MAT.TAP.TelemetryAnalytics.API
+sudo systemctl stop MAT.TAP.TelemetryAnalytics.API.service
+sudo systemctl start MAT.TAP.TelemetryAnalytics.API.service
 ```
 
 or configure your config in /opt/MAT.TAP.TelemetryAnalytics.API/appConfiguration.Production.jso
@@ -84,6 +84,8 @@ A sample configuration and an explanation of settings is given below.
   "OAuthServer": "http://localhost:5000"
 }
 ```
+
+**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json and that service needs restart to reconfigure.**
 
 - `OAuthServer`: Address of the OAuthServer for authorization (User CRUD API). **If you accessing API from outside using external IP adress you might need to put external address here.**
 - `InitializeDatabase`: True to initialize database configured in ConnectionStrings section.
