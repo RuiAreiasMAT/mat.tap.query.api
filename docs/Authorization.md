@@ -42,33 +42,7 @@ After getting a token from the server you have to use it in each request of the 
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
-## Testing with Swagger UI
-
-### SqlRace API
-
-If you are using Swagger UI for test the API you can ask for a token accessing to the  **Authentication** controller in the own interface of the Swagger UI main page. You only need to fill up the fields ```username``` and ```password``` and press the button **"Try it out"**:
-
-![](/docs/SwaggerAuthentication.png)
-
-The resulting field ```access_token``` gives you the bearer token that you must use in the rest of endpoints of the Swagger UI. All the endpoints that need authorization ask you for filling up an additional field named ```Authorization```. You must to put in this field the keyword **"bearer"** followed by a space and the **Token** string provided for the previous call to the **Authentication** controller.
-
-Following images shows an example of how to use it:
-
-![](/docs/SwaggerAuthorization.png)
-
-### Identity Server
-
-You can use Swagger UI in Identity Server to test the token endpoint and receive an access token. Navigate to `/swagger` and in the `Authentication` URI, click on **Try it out**, enter the credentials and click on **Execute**:
-
-![](/docs/Swagger_Influx.png)
-
-You can verify the access token with any of the available controllers in Swagger UI. At the top of the page, click on **Authorize**, enter **"Bearer"**, followed by a space and paste the access token from the previous request and click on **Authorize** as shown in the image. You only need to set token once per session with Swagger UI. It will automatically be incldued in the headers for subsequent requests unless you logout using the **Logout** button in **Authorize** or the token expires.
-
-![](/docs/bearer_token_influx.png)
-
-Now, try using any of controllers. For example, try getting all the users using `/api/v1/users`. If the token authentication is successful, you will see the list of users allowed for TAPI. Otherwise, you will get `401 Unauthorized` as response.
-
-![](/docs/swagger_token_validation.png)
+In order to test authentication using Swagger UI, please see [Testing Authentication with Swagger UI](/docs/SwaggerUIAuth.md).
 
 
 
