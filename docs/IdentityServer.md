@@ -67,7 +67,7 @@ In order to use IdentityServer, add the relevant configuration in `appsettings.P
 
     dotnet MAT.TAP.IdentityServer.dll --urls="http://*:5000"
 
-**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json**
+**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json and that service needs restart to reconfigure.**
 A sample configuration and an explanation of settings is given below.
 
 ```
