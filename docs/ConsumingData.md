@@ -21,13 +21,13 @@ There are multiple ways to consume data and multiple ways to filter them, all of
 For InfluxDb data for querying with frequency specified:
 
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
 ```
 
 And querying without specifying frequency:
 
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
 ```
 
 Please note that you can only query one parameter at a time from InfluxDb at the moment. Support for multiple parameters is in the roadmap. 
@@ -37,7 +37,7 @@ All the resources under this base url mask are also available for SqlRace data. 
 For SqlRace data: 
 
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
 ```
 
 ### Url parameters
@@ -105,12 +105,12 @@ The endpoint ```/data``` is the base endpoint for consuming data in the API. It 
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -155,12 +155,12 @@ the number of samples that fit all filters. Note: instead of parameters you can 
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/count
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -175,14 +175,12 @@ The ```/data/timeRanges``` endpoint returns time ranges of result samples. Note 
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}
-/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/timeRanges
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c
-/parameters/vCar/10/data/timeRanges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/timeRanges?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -221,12 +219,12 @@ The ```/data/grouped``` endpoint will return data grouped to time ranges. Note t
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter1,parameter2,...,parameter_n}/{frequency}/data/grouped
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/grouped?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
@@ -277,13 +275,12 @@ All data queries could be done over multiple sessions for SqlRace data (InfluxDb
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey1,sessionKey2,...,sessionKeyN}/parameters/{parameter1,parameter2,...,parameter_n}/table/{frequency}/data
 ```
 
 Example
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a
-/parameters/vCar/table/10/data?from=11:15&to=11:20&filter=vCar:Chassis;gt;100,vCar:Chassis;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c,asdsad199-16155a-43ec-bb0a-12sadsa23a/parameters/vCar/table/10/data?from=11:15&to=11:20&filter=vCar:Chassis;gt;100,vCar:Chassis;le;150
 ```
 
 Result

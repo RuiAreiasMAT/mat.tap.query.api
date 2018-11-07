@@ -38,13 +38,12 @@ Please note that some characters are not allowed in URL and therefore must be sp
   
 Mask
 ```
-GET api/connections/{connection name}/sessions
+GET api/{apiVersion}/connections/{connection name}/sessions
 ```
 
 Example  
 ```
-GET api/connections/Simulator/sessions?items=Driver:KHA,Car:P1GTR&filter=LapsCount > 5 %26%26 TimeOfRecording >
-DateTime.Parse("2017-12-18")
+GET api/v1/connections/Simulator/sessions?items=Driver:KHA,Car:P1GTR&filter=LapsCount > 5 %26%26 TimeOfRecording > DateTime.Parse("2017-12-18")
 ```
 
 Result  
@@ -96,12 +95,12 @@ Please note that some characters are not allowed in URL and therefore must be sp
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/live
+GET api/{apiVersion}/connections/{connection name}/sessions/live
 ```
   
 Example  
 ```
-GET api/connections/Simulator/sessions/live
+GET api/v1/connections/Simulator/sessions/live
 ```
 
 
@@ -112,12 +111,12 @@ The ```/sessions/{sessionKey}/parameters``` endpoint give you access to a list *
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/parameters
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters
 ```
 
 Example  
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
 ```
   
 Optional parameters  
@@ -133,14 +132,14 @@ Optional parameters
 
 Example  
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&pageSize=50
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?page=2&pageSize=50
 ```
   
 ### Filtering  
   
 Example 
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
 ```
   
 Result  
@@ -197,12 +196,12 @@ The ```/sessions/{sessionKey}/details``` endpoint give you access to a list **de
 
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/details
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/details
 ```
   
 Example  
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
 ```
   
 Result  
@@ -258,12 +257,12 @@ The ```/sessions/{sessionKey}/laps``` endpoint give you access to the informatio
   
 Mask
 ```
-GET api/connections/{connection name}/sessions/{sessionKey}/laps
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/laps
 ```
   
 Example 
 ```
-GET api/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
 ```
   
 Result
