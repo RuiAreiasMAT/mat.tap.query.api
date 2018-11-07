@@ -36,9 +36,13 @@ Following image shows an example of this type of request for Identity Server usi
 
 Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON.
 
-## Authorization of request
+## Validate Access Token
 
-After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The parameter name to use is ```Authorization``` and the value is keyword **"bearer"** followed by a space and the **Token** string.
+In order to test the token you just obtained with Postman, try getting the sessions in the database using `/api/v1/connections/{connection name}/sessions`. Before making the GET request, navigate to **Authorization** tab in Postman, under **TYPE** dropdown, select **Bearer Token** and paste the access token you obtained from the token endpoint in the textbox next to **Token** as shown below. If the token is valid, you will get `200 OK` response and will be able to see sessions in the database if there is any. If the token is valid, you will receive `401 Unauthorized` response:
+
+<img src="validate_token_postman_new_api.png" alt="drawing" width="80%"/>
+
+Equivalently, you can navigate to **Headers** tab in Postman and enter **Authorization** as **Key** and keyword "bearer" followed by a space and the Token string as **Value**:
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
