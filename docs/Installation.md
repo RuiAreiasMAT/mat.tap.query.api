@@ -65,11 +65,11 @@ sudo systemctl stop MAT.TAP.TelemetryAnalytics.API.service
 sudo systemctl start MAT.TAP.TelemetryAnalytics.API.service
 ```
 
-or configure your config in /opt/MAT.TAP.TelemetryAnalytics.API/appConfiguration.Production.jso
+or configure your config in /opt/MAT.TAP.TelemetryAnalytics.API/appsettings.Production.jso
 
 #### Basic usage
 
-In order to use IdentityServer, add the relevant configuration in `appConfiguration.Production.json` file and start service using
+In order to use IdentityServer, add the relevant configuration in `appsettings.Production.json` file and start service using
 
     dotnet MAT.TAP.AAS.TelemetryAnalytics.API.dll --urls="http://*:5000"
 
