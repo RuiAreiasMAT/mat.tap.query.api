@@ -14,43 +14,39 @@
 
 # Authorization
 
-This API uses a Token authentication. You use your user/password to ask the server for an access token, then you can include this access token in the header in all requests to the server.
+This API uses a Token authentication. You use your user/password to ask the server for an access token, then you can include this access token in the header in all requests to the server. Please note that for SqlRace, OAuth server is embedded. Hence, you can use the same API to get the access token as TAPI. However, for InfluxDb API, OAuth server is called Identity Server and is deployed as a separate API. Please refer to the Swagger UI for [Identity Server](/docs/IdentityServer.md) to test the token endpoint. 
 
 ## Getting a token
 
-To ask for a token you have to use the following endpoint filling up the parameters ```username```, ```password```, ```grant_type``` and ```client_id``` in the body of the request:
+To ask for a token you have to use the following endpoint filling up the parameters `username`, `password` and `grant_type` (and `client_id` for Identity Server) in the body of the request:
 
 ```
 GET /token
 ```
 
-Note that default ```username```, ```password``` and ```client_id``` in a new installation of the API are **"admin"**, **"admin"** and **"default.tapi.client"** respectively. Field ```grant_type``` is always the same value **"password"**.
+Note that default ```username```, ```password``` and ```client_id``` in a new installation of the API are **"admin"**, **"admin"** and **"default.tapi.client"** respectively. Field ```grant_type``` is always the same value as **"password"**.
 
-Following image shows an example of this type of request:
+Following image shows an example of this type of request for the embedded OAuth Server:
 
 <img src="Authorization1.png" alt="drawing" width="80%"/>
 
-Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON (1 day here).
+Following image shows an example of this type of request for Identity Server using InfluxDb as storage:
 
-## Authorization of request
+<img src="AuthorizationInflux.png" alt="drawing" width="80%"/>
 
-After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The parameter name to use is ```Authorization``` and the value is keyword **"bearer"** followed by a space and the **Token** string.
+Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON.
+
+## Validate Access Token
+
+In order to test the token you just obtained with Postman, try getting the sessions in the database using `/api/v1/connections/{connection name}/sessions`. Before making the GET request, navigate to **Authorization** tab in Postman, under **TYPE** dropdown, select **Bearer Token** and paste the access token you obtained from the token endpoint in the textbox next to **Token** as shown below. If the token is valid, you will get `200 OK` response and will be able to see sessions in the database if there is any. If the token is invalid, you will receive `401 Unauthorized` response:
+
+<img src="validate_token_postman_new_api.png" alt="drawing" width="80%"/>
+
+Equivalently, you can navigate to **Headers** tab in Postman and enter **Authorization** as **Key** and keyword "bearer" followed by a space and the Token string as **Value**:
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
-## Authorization using Swagger UI
-
-If you are using Swagger UI for test the API you can ask for a token accessing to the  **Authentication** controller in the own interface of the Swagger UI main page. You only need to fill up the fields ```username``` and ```password``` and press the button **"Try it out"**:
-
-![](/docs/SwaggerAuthentication.png)
-
-The resulting field ```access_token``` gives you the bearer token that you must use in the rest of endpoints of the Swagger UI. All the endpoints that need authorization ask you for filling up an additional field named ```Authorization```. You must to put in this field the keyword **"bearer"** followed by a space and the **Token** string provided for the previous call to the **Authentication** controller.
-
-Following images shows an example of how to use it:
-
-![](/docs/SwaggerAuthorization.png)
-
-
+In order to test authentication using Swagger UI, please see [Testing Authentication with Swagger UI](/docs/SwaggerUIAuth.md).
 
 
 
