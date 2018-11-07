@@ -30,7 +30,7 @@ Following image shows an example of this type of request for the embedded OAuth 
 
 <img src="Authorization1.png" alt="drawing" width="80%"/>
 
-Following image shows an example of this type of request for the Identity Server using InfluxDb as storage:
+Following image shows an example of this type of request for Identity Server using InfluxDb as storage:
 
 <img src="AuthorizationInflux.png" alt="drawing" width="80%"/>
 
@@ -38,7 +38,7 @@ Field ```access_token``` of the result gives you the bearer token that you want 
 
 ## Authorization of request
 
-After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The parameter name to use is ```Authorization``` and the value is keyword **"Bearer"** followed by a space and the **Token** string.
+After getting a token from the server you have to use it in each request of the API putting it as a parameter in the Header of each call. The parameter name to use is ```Authorization``` and the value is keyword **"bearer"** followed by a space and the **Token** string.
 
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
