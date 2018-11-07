@@ -23,6 +23,9 @@ Run msi installer and follow instructions. **Note that API will clash with Atlas
 
 ## InfluxDb
 ### Deployment
+
+Before installation of MAT.TAP.TelemetryAnalytics.API install  [**Identity Server**](/docs/IdentityServer.md) first.
+
 #### .NET Core runtime
 First you need to install .NET Core 2.1 runtime. You can donwload it [here](https://www.microsoft.com/net/download/dotnet-core/2.1). Example for Ubuntu 18.04 LTE: 
 
