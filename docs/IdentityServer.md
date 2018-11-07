@@ -59,13 +59,13 @@ sudo systemctl stop MAT.TAP.IdentityServer.Writer
 sudo systemctl start MAT.TAP.IdentityServer.Writer 
 ```
 
-or configure your config in /opt/MAT.TAP.IdentityServer/appConfiguration.Production.json
+or configure your config in /opt/MAT.TAP.IdentityServer/appsettings.Production.json
 
 #### Basic usage
 
-In order to use IdentityServer, add the relevant configuration in `appConfiguration.Production.json` file and start service using
+In order to use IdentityServer, add the relevant configuration in `appsettings.Production.json` file and start service using
 
-    dotnet MAT.TAP.AAS.IdentityServer.dll --urls="http://*:5000"
+    dotnet MAT.TAP.IdentityServer.dll --urls="http://*:5000"
 
 A sample configuration and an explanation of settings is given below.
 
