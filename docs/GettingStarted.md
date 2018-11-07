@@ -74,7 +74,7 @@ The InfluxDb connections that you can get from the endpoint ```api/v1/connection
 You can create a new connection using `POST` request:
 
 ```
-POST api/connections
+POST api/v1/connections
 ```
 
 Request:
