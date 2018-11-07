@@ -66,7 +66,7 @@ You can verify the access token with any of the available controllers in Swagger
 
 ![](/docs/bearer_token_influx.png)
 
-Now, try using any of controllers. For example, try getting all the users using `/api/v1/users`. If the token authentication is successful, you will see the list of users allowed for TAPI:
+Now, try using any of controllers. For example, try getting all the users using `/api/v1/users`. If the token authentication is successful, you will see the list of users allowed for TAPI. Otherwise, you will get `401 Unauthorized` as response.
 
 ![](/docs/swagger_token_validation.png)
 
