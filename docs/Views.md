@@ -21,7 +21,7 @@ A user can specify the view of parameters and then use it to query parameters da
 
 Example
 ```
-GET api/views
+GET api/v1/views
 ```
 Result
 ```json
@@ -38,7 +38,7 @@ Result
 
 Request
 ```
-GET api/views/2/parameters
+GET api/v1/views/2/parameters
 ```
 
 Result
@@ -58,7 +58,7 @@ API exposes a CRUD API for views. You can use this CRUD in order to create, modi
 
 Request
 ```
-POST api/views
+POST api/v1/views
 ```
 
 Body
@@ -72,7 +72,7 @@ Body
 
 Request
 ```
-PUT api/views/
+PUT api/v1/views/
 ```
 Body
 ```json
@@ -87,14 +87,14 @@ Body
 
 Request
 ```
-DELETE api/views/2
+DELETE api/v1/views/2
 ```
 
 ## Add view parameters
 
 Request
 ```
-PUT api/views/2/parameters
+PUT api/v1/views/2/parameters
 ```
 
 Body
@@ -117,7 +117,7 @@ Result
 
 Request
 ```
-DELETE api/views/2/parameters
+DELETE api/v1/views/2/parameters
 ```
 Body
 ```
@@ -139,14 +139,12 @@ Consuming data in views is as easy as replacing the list of parameters of the se
 
 Mask
 ```
-GET api/connections/{connection friendly name}/sessions/{sessionKey}
-/view/{view name}/{frequency}/data
+GET api/{apiVersion}/connections/{connection friendly name}/sessions/{sessionKey}/view/{view name}/{frequency}/data
 ```
 
 Example
 ```
-GET api/connections/SQLRACE01/sessions/016fa61e-33e2-7e85-1bc9-4ab56c668136
-/view/TestView 2/10/data?filter=vCar:Chassis;gt;326
+GET api/v1/connections/SQLRACE01/sessions/016fa61e-33e2-7e85-1bc9-4ab56c668136/view/TestView 2/10/data?filter=vCar:Chassis;gt;326
 ```
 
 Result
@@ -186,7 +184,7 @@ query.
 
 Example
 ```
-GET api/connections/SQLRACE01/sessions/
+GET api/v1/connections/SQLRACE01/sessions/
 26c9ed85-e7ab-0e3f-0fc0-8a69f7743883,0095fa36-a3cb-1dc0-59c0-df620ed271db,
 21c9e13c-bed0-b738-b067-33e1b67433ea,6a463017-933c-9e2a-99d7-8e0d9f1d6049,
 92cbbae9-cd2c-aff8-f071-856bc116405a

@@ -33,7 +33,7 @@
 Telemetry Query API could be connected to multiple sources of data. You can query these sources with the following endpoint:
 
 ```
-GET api/connections
+GET api/v1/connections
 ```
 
 Result:
@@ -64,18 +64,18 @@ Result:
 
 ### SqlRace Connections
 
-The SQLRace connections that you can get from the endpoint ```api/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections accessing to ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
+The SQLRace connections that you can get from the endpoint ```api/v1/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections accessing to ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
 
 <img src="/docs/AtlasDbManager.png" alt="Atlas Database Manager" width="90%"/>
 
 ### InfluxDb Connections
 
-The InfluxDb connections that you can get from the endpoint ```api/connections``` depend on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings needs to be created in the `api/connections` before querying.
+The InfluxDb connections that you can get from the endpoint ```api/v1/connections``` depend on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings needs to be created in the `api/v1/connections` before querying.
 
 You can create a new connection using `POST` request:
 
 ```
-POST api/connections
+POST api/v1/connections
 ```
 
 Request:
@@ -112,16 +112,16 @@ You can also update and delete existing connections using `PUT` and `DELETE` req
 Every connection provides a list of [Sessions](/docs/Sessions.md). You can query these [Sessions](/docs/Sessions.md) using the "FriendlyName" of the connection:
 
 ```
-GET api/connections/{connection friendly name}/sessions
+GET api/{apiVersion}/connections/{connection friendly name}/sessions
 ```
 Example:
 ```
-GET api/connections/Simulator/sessions
+GET api/v1/connections/Simulator/sessions
 ```
 Paging is supported by this query. Page and page size could be specified. Default page size is 50 sessions in one page.
 
 ```
-GET api/connections/Simulator/sessions?page=1&pageSize=
+GET api/v1/connections/Simulator/sessions?page=1&pageSize=
 ```
 Result:
 ```json
