@@ -16,7 +16,10 @@
 Consuming Data
 =====================
 
-There are multiple ways to consume data and multiple ways to filter them, all of them grouped under the common endpoint ```/data```. Parameters of the session to query could be specified in URL or by a view. (See [Views](/docs/Views.md)).
+URIs for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources are currently only supports SqlRace as the backing storage.
+
+The main difference in the functionality of the two endpoints is that you can query multipe parameters at a time with `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
+
 
 ### Base url masks
 
