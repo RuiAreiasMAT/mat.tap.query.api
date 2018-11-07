@@ -55,8 +55,8 @@ journalctl --unit MAT.TAP.IdentityServer.service --follow -n 100
 or start and stop by 
 
 ```
-sudo systemctl stop MAT.TAP.IdentityServer.Writer 
-sudo systemctl start MAT.TAP.IdentityServer.Writer 
+sudo systemctl stop MAT.TAP.IdentityServer.Writer.service
+sudo systemctl start MAT.TAP.IdentityServer.Writer.service
 ```
 
 or configure your config in /opt/MAT.TAP.IdentityServer/appsettings.Production.json
@@ -67,6 +67,7 @@ In order to use IdentityServer, add the relevant configuration in `appsettings.P
 
     dotnet MAT.TAP.IdentityServer.dll --urls="http://*:5000"
 
+**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json**
 A sample configuration and an explanation of settings is given below.
 
 ```
