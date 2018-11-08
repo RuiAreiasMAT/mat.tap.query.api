@@ -16,7 +16,7 @@
 
 Identity Server implements OpenID Connect and provides authentication services for Telemetry Analytics API. Identity Server provides following services.
 
-- Provides a REST API to manage TAPI users;
+- Provides a RESTful API to manage TAPI users;
 - Issues access tokens to authorize access to TAPI resources.
 
 ### Deployment
@@ -61,13 +61,14 @@ sudo systemctl start MAT.TAP.IdentityServer.Writer.service
 
 or configure your config in /opt/MAT.TAP.IdentityServer/appsettings.Production.json
 
-#### Basic usage
+#### Running Identity Server from Terminal
 
-In order to use IdentityServer, add the relevant configuration in `appsettings.Production.json` file and start service using
+Alternatively, you can use Identity Server by adding the relevant configuration in `appsettings.Production.json` file and running the following command from the terminal. Make sure you are in the same directory as the **MAT.TAP.IdentityServer.dll**.
 
     dotnet MAT.TAP.IdentityServer.dll --urls="http://*:5000"
 
-**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json and that service needs restart to reconfigure.**
+**Please note that the daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json and that service needs restart to reconfigure.**
+
 A sample configuration and an explanation of settings is given below.
 
 ```
@@ -88,8 +89,8 @@ A sample configuration and an explanation of settings is given below.
 }
 ```
 
-- `OAuthServer`: Address of the OAuthServer for authorization (User CRUD API). **If you are accessing API from outside using external IP address you might need to put external address here.**
-- `InitializeDatabase`: True to initialize database configured in ConnectionStrings section.
+- `OAuthServer`: Address of the OAuthServer for authorization (User CRUD API). **If you are accessing the API from outside using an external IP address you may need to use that external address here.**
+- `InitializeDatabase`: Set `True` to initialize database configured in ConnectionStrings section. This creates the database if it doesn't exist and applies any pending database migrations.
 - `ConnectionStrings`: SQL Server connection string to Identity server storage.
 
 ### User Management
@@ -218,7 +219,7 @@ Important: You need to provide user id and username in request body.
 
 #### Reset Password
 
-Resetting password is similar to updating an existing user. However, in addition to user Id and username,  you need to also provide old password for validation.
+Resetting password is similar to updating an existing user. However, in addition to user Id and username,  you need to also provide the old password for validation.
 
 Url Mask:
 
