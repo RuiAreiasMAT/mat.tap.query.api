@@ -24,10 +24,10 @@ Run msi installer and follow instructions. **Note that API will clash with Atlas
 ## InfluxDb
 ### Deployment
 
-Before installation of MAT.TAP.TelemetryAnalytics.API install  [**Identity Server**](/docs/IdentityServer.md) first.
+Install [**Identity Server**](/docs/IdentityServer.md) before installing MAT.TAP.TelemetryAnalytics.API.
 
 #### .NET Core runtime
-First you need to install .NET Core 2.1 runtime. You can donwload it [here](https://www.microsoft.com/net/download/dotnet-core/2.1). Example for Ubuntu 18.04 LTE: 
+First you need to install .NET Core 2.1 runtime. You can download it [here](https://www.microsoft.com/net/download/dotnet-core/2.1). Following are the installation steps for Ubuntu 18.04 LTE:
 
 ```
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
@@ -39,7 +39,7 @@ sudo apt-get --yes install aspnetcore-runtime-2.1
 ```
 
 #### Daemon installation
-One the examples how to run TAPI is systemd daemon service. In the release bundle, there is a shell script **daemon_deploy.sh** for daemon installation. 
+One way to run TAPI is as a systemd daemon service. In the release bundle, there is a shell script **daemon_deploy.sh** for daemon installation. 
 
 Before you run it, execute following commands:
 ```
@@ -52,24 +52,24 @@ Then run:
 ./daemon_deploy.sh
 ```
 
-You can verify it by:
+You can verify it with:
 
 ```
 journalctl --unit MAT.TAP.TelemetryAnalytics.API.service --follow -n 100
 ```
 
-or start and stop by 
+You can use the following commands to stop or start the service. 
 
 ```
 sudo systemctl stop MAT.TAP.TelemetryAnalytics.API.service
 sudo systemctl start MAT.TAP.TelemetryAnalytics.API.service
 ```
 
-or configure your config in `/opt/MAT.TAP.TelemetryAnalytics.API/appsettings.Production.json`
+TAPI uses `/opt/MAT.TAP.TelemetryAnalytics.API/appsettings.Production.json` as configuraiton file. You can modify configuration by changing the values in this file.
 
 #### Basic usage
 
-In order to use IdentityServer, add the relevant configuration in `appsettings.Production.json` file and start service using
+In order to use Identity Server, add the relevant configuration in `appsettings.Production.json` file and start service using
 
     dotnet MAT.TAP.AAS.TelemetryAnalytics.API.dll --urls="http://*:5000"
 
@@ -85,8 +85,10 @@ A sample configuration and an explanation of settings is given below.
 }
 ```
 
-**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json and that service needs restart to reconfigure.**
+Note that you can run Identity Server as a service just like TAPI using the **daemon_deploy.sh** file in the Identity Server release bundle. This is the recommended deployment for a production environment.
 
-- `OAuthServer`: Address of the OAuthServer for authorization (User CRUD API). **If you accessing API from outside using external IP adress you might need to put external address here.**
-- `InitializeDatabase`: True to initialize database configured in ConnectionStrings section.
-- `ConnectionStrings`: SQL Server connection string to Identity server storage.
+**Please note, that daemon is using configuration file from /opt/MAT.TAP.IdentityServer/appsettings.Production.json and that service needs to restart after making any changes to the configuration file.**
+
+- `OAuthServer`: Address of the OAuthServer for authorization (User CRUD API). **If you are accessing the API from outside using an external IP adress you may need to use that external address here.**
+- `InitializeDatabase`: Set `True` to initialize database configured in ConnectionStrings section. This creates the database if it doesn't exist and applies any pending database migrations.
+- `ConnectionStrings`: SQL Server connection string to Identity Server storage.

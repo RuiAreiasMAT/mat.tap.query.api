@@ -17,16 +17,16 @@
 1. For querying the server it is recommended (but not essential) to use [Postman](https://getpostman.com).
 
 	 - Download and install it if you don't have it.
-	 - You don't need an account
+	 - You don't need to create a Postman account to use it.
 
 2. Get a password.
 
-	- For an example of this see the [Authorization](Authorization.md) page (but change the username and password)
-	- For those who are not familiar with this, you use your password to ask the server for an access token. You then include this access token in the header in all requests to the server.
+	- For an example of this, see the [Authorization](Authorization.md) page (but change the username and password)
+	- For those who are not familiar with token authentication, you use your username and password to ask the authentication server for an access token. You then include this access token in the header in all HTTP requests to the API.
 
 3. Use Swagger UI.
 
-	- An alternative way to test this API is using Swagger UI that it's embedded in the own implementation of the server. You can check more information about it in the following [Swagger](#swagger) section of this documentation.
+	- An alternative way to test this API is using Swagger UI that it's embedded in the server. Refer to [Swagger](#swagger) section of this documentation for more information on how to use it.
 	
 ## Connections
 
@@ -64,13 +64,13 @@ Result:
 
 ### SqlRace Connections
 
-The SQLRace connections that you can get from the endpoint ```api/v1/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections accessing to ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
+SQLRace connections that you can get from the endpoint ```api/v1/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections using ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
 
 <img src="/docs/AtlasDbManager.png" alt="Atlas Database Manager" width="90%"/>
 
 ### InfluxDb Connections
 
-The InfluxDb connections that you can get from the endpoint ```api/v1/connections``` depend on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings needs to be created in the `api/v1/connections` before querying.
+InfluxDb connections that you can get from the endpoint ```api/v1/connections``` depend on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings need to be created in the `api/v1/connections` before querying.
 
 You can create a new connection using `POST` request:
 
@@ -102,8 +102,8 @@ Result:
 
 - `influxDbUrl` is the address of the InfluxDb instance used to store data.
 - `measurementName` is the name of the InfluxDb database (timeseries). Usually, this is the same as the topic name of the stream.
-- `identifier` is string that uniquely identifies the connection.
-- `sqlServerConnectionString` is the connection details of the database that stores the session metadata.
+- `identifier` is a string that uniquely identifies the connection.
+- `sqlServerConnectionString` is the connection string of the SQL database that stores session metadata.
 
 You can also update and delete existing connections using `PUT` and `DELETE` requests based on the connection identifier. Please refer to the [Swagger UI](#swagger) for more information.
 
@@ -118,7 +118,7 @@ Example:
 ```
 GET api/v1/connections/Simulator/sessions
 ```
-Paging is supported by this query. Page and page size could be specified. Default page size is 50 sessions in one page.
+Paging is supported by this query. Page and page size can be specified. Default page size is 50 sessions in one page.
 
 ```
 GET api/v1/connections/Simulator/sessions?page=1&pageSize=
@@ -156,7 +156,7 @@ Result:
 
 ## Swagger
 
-Telemetry Analytics API natively support the **Open API** (formerly Swagger) API documentation format. It also integrates a version of **Swagger UI**, a nice tool to display and test all the API endpoints in a user friendly way. You can access to Swagger UI implementation using the following url from a web browser:
+Telemetry Analytics API natively supports the **Open API** (formerly Swagger) API documentation format. It also integrates a version of **Swagger UI**, a nice tool to display and test all the API endpoints in a user friendly way. You can access the Swagger UI using the following url from a web browser:
 
 ```
 http://{hostname}:{port}/swagger
@@ -164,11 +164,11 @@ http://{hostname}:{port}/swagger
 
 ![](/docs/SwaggerUI.png)
 
-Swagger is a specification for documenting REST API. It specifies the format (URL, method, and representation) to describe REST web services. 
+Swagger is a specification for documenting RESTful APIs. It specifies the format (URL, method, and representation) to describe RESTful web services. 
 
 Swagger is a language-agnostic specification, with its declarative resource specification, clients can easily understand and consume services without any prior knowledge of server implementation or access to the server code.
 
-You can query or consume an updated Open API / Swagger specification of the API accessing to the following url of the server:
+You can query or consume an updated Open API / Swagger specification of the API using the following url of the server:
 
 ```
 http://{hostname}:{port}/swagger/docs/v1

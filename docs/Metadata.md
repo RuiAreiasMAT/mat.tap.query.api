@@ -21,16 +21,16 @@ There are multiple endpoints available to query sessions metadata information. I
 Sessions  
 ========
 
-The ```/sessions``` endpoint give you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
+The ```/sessions``` endpoint gives you access to a list of **historical** sessions available for a given connection. You can filter this list of sessions by several parameters.
 
 Optional parameters  
 -------------------  
   
 | Parameter name | Description | Default value | Example |  
 |----------------|-------------------------------------------------------------|---------------|---------------------------------------------------------------------------|  
-| details | This filter sessions by session details like driver, car etc. | | Driver:KHA,Car:P1GTR |  
+| details | Filters sessions by session details like driver, car etc. | | Driver:KHA,Car:P1GTR |  
 | filter | This filter returned query with expression. | | LapsCount &gt; 5 %26%26 TimeOfRecording &gt; DateTime.Parse("2017-12-18") |  
-| page | Index of page returned in result (0 is first page) | | 3 |  
+| page | Index of the page returned in result (0 is first page) | | 3 |  
 | pageSize | Size of one page. | 200 | 50 |  
   
 Filter  
@@ -79,7 +79,7 @@ Result
 Live sessions  
 ===================  
 
-The ```/sessions/live``` endpoint give you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
+The ```/sessions/live``` endpoint gives you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
 
 Optional parameters  
 -------------------  
@@ -93,7 +93,7 @@ Optional parameters
 Filter  
 ------  
   
-Please note that some characters are not allowed in URL and therefore must be specified with percentage and symbol number. For example: & must be replaced by %26.  
+Please note that some characters are not allowed in URL and therefore must be specified with percentage sign and symbol number. For example: & must be replaced by %26.  
 
 Mask
 ```
@@ -109,7 +109,7 @@ GET api/v1/connections/Simulator/sessions/live
 Parameters  
 ==========  
 
-The ```/sessions/{sessionKey}/parameters``` endpoint give you access to a list **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can finally consume in the section [Consuming Data](/docs/ConsumingData.md).
+The ```/sessions/{sessionKey}/parameters``` endpoint gives you access to a list of **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can consume as described in [Consuming Data] (/docs/ConsumingData.md) section.
 
 Mask
 ```
@@ -194,7 +194,7 @@ Result
 Details  
 =======
 
-The ```/sessions/{sessionKey}/details``` endpoint give you access to a list **details** available for a specific session.
+The ```/sessions/{sessionKey}/details``` endpoint gives you access to a list of **details** available for a specific session.
 
 Mask
 ```
@@ -255,7 +255,7 @@ Result
 Laps  
 ====  
 
-The ```/sessions/{sessionKey}/laps``` endpoint give you access to the information with the **laps** of specific session. 
+The ```/sessions/{sessionKey}/laps``` endpoint gives you access to information related to the **laps** of a specific session. 
   
 Mask
 ```

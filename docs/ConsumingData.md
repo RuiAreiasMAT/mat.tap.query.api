@@ -14,7 +14,7 @@
 Consuming Data
 =====================
 
-URIs for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources are currently only supports SqlRace as the backing storage.
+URIs for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources currently only support SqlRace as the backing storage.
 
 The main difference in the functionality of the two endpoints is that you can query multipe parameters over multiple sessions at a time with `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
 
@@ -49,8 +49,8 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 
 | Parameter name | Description                                                                                         | Default value | Example     |
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
-| from           | Filters data in session by time. All data returned would have time stamp after specified time.      |    `null`     | 10:34       |
-| to             | Filters data in session by time. All data returned would have time stamp before specified time.     |    `null`     | 10:50       |
+| from           | Filters data in session by time. All data returned would have a time stamp after the specified time.|    `null`     | 10:34       |
+| to             | Filters data in session by time. All data returned would have a time stamp before the specified time.|    `null`     | 10:50       |
 | lap            | Filters data for specified lap in session.                                                          |    `null`     | 3           |
 | filter         | Generic filter expression describing filters.                                                       |    `null`     | value;ge;300 |
 | page           | Index of page returned in result (0 is first page)                                                  |      0        | 3           |
@@ -199,7 +199,7 @@ Result
 
 #### Grouped data
 
-The ```/table/{frequency}/data/grouped``` endpoint will return data grouped to time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
+The ```/table/{frequency}/data/grouped``` endpoint will return data grouped by time ranges. Note that you can use all the parameters and filters used in the rest of endpoints.
 
 Mask
 ```
@@ -254,7 +254,7 @@ Result
 
 ### More on filtering
 
-Filter is an optional parameter that we can use to filter when consuming data. There are multiple types of filters could be specified.
+Filter is an optional parameter that we can use to filter when consuming data. There are multiple types of filters.
 
 #### Filter types
 
@@ -269,7 +269,7 @@ Filter is an optional parameter that we can use to filter when consuming data. T
 
 #### Parameter filter
 
-Structure of one parameter filter instance is:
+Structure of one parameter filter is:
 
 Parameter filter url mask
 ```
@@ -293,7 +293,7 @@ Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for 
 
 ### More on querying multiple sessions table data
 
-All data queries could be done over multiple sessions for SqlRace data (InfluxDb data support for this feature is in the roadmap).
+All data queries can be done over multiple sessions for SqlRace data (InfluxDb data support for this feature is in the roadmap).
 
 Mask
 ```
