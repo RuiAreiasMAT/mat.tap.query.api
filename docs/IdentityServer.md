@@ -55,11 +55,11 @@ journalctl --unit MAT.TAP.IdentityServer.service --follow -n 100
 or start and stop by 
 
 ```
-sudo systemctl stop MAT.TAP.IdentityServer.Writer.service
-sudo systemctl start MAT.TAP.IdentityServer.Writer.service
+sudo systemctl stop MAT.TAP.IdentityServer.service
+sudo systemctl start MAT.TAP.IdentityServer.service
 ```
 
-or configure your config in /opt/MAT.TAP.IdentityServer/appsettings.Production.json
+or configure your config in **/opt/MAT.TAP.IdentityServer/appsettings.Production.json**
 
 #### Running Identity Server from Terminal
 
