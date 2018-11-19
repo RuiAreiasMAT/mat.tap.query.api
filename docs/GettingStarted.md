@@ -85,7 +85,7 @@ Request:
   "influxDbUrl": "http://10.228.4.17:8086",
   "measurementName": "Marple",
   "identifier": "Season2017",
-  "sqlServerConnectionString": "server=10.228.5.4\\SQLEXPRESS;Initial Catalog=TelemetryAnalytics.Api.Sessions;User Id=test;Password=test;"
+  "sqlServerConnectionString": "server=.\\SQLEXPRESS;Initial Catalog=Telemetry.Analytics.API.Influx.Sessions;User Id=test;Password=test;"
 }
 ```
 
@@ -96,7 +96,7 @@ Result:
   "influxDbUrl": "http://10.228.4.17:8086",
   "measurementName": "Marple",
   "identifier": "Season2017",
-  "sqlServerConnectionString": "server=10.228.5.4\\SQLEXPRESS;Initial Catalog=TelemetryAnalytics.Api.Sessions;User Id=test;Password=test;"
+  "sqlServerConnectionString": "server=.\\SQLEXPRESS;Initial Catalog=Telemetry.Analytics.API.Influx.Sessions;User Id=test;Password=test;"
 }
 ```
 
