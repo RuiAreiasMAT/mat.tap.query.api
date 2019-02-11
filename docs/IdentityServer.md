@@ -16,8 +16,8 @@
 
 Identity Server implements OpenID Connect and provides authentication services for Telemetry Analytics API. Identity Server provides following services.
 
-- Provides a RESTful API to manage TAPI users;
-- Issues access tokens to authorize access to TAPI resources.
+- Provides a RESTful API to manage TAPI users and clients;
+- Facilitate OAuth2.0 flows to authorize access to TAPI resources.
 
 ### Deployment
 #### .NET Core runtime
@@ -74,7 +74,7 @@ A sample configuration and an explanation of settings is given below.
 ```
 {
   "ConnectionStrings": {
-    "IdentityDatabase": "server=.\\SQLEXPRESS;Initial Catalog=MAT-TAP-IdentityServer;User Id=test;Password=test;"
+    "IdentityDatabase": "server=(localdb)\\MSSQLLocalDB;Initial Catalog=MAT-TAP-IdentityServer"
   },
   "InitializeDatabase": true,
   "Logging": {
@@ -85,13 +85,23 @@ A sample configuration and an explanation of settings is given below.
       "Microsoft": "Information"
     }
   },
-  "OAuthServer": "http://localhost:5000"
+  "OAuthServer": "http://localhost:5000",
+  "TokenCleanUp": {
+    "EnableCleanUp": true,
+    "CleanUpInterval": 10080 // In minutes.,
+  },
+  "AllowedOrigins": [
+    "*"
+  ] // Cors Policy. List of origins or wildcard character to allow all origins.
 }
 ```
 
-- `OAuthServer`: Address of the OAuthServer for authorization (User CRUD API). **If you are accessing the API from outside using an external IP address you may need to use that external address here.**
-- `InitializeDatabase`: Set `True` to initialize database configured in ConnectionStrings section. This creates the database if it doesn't exist and applies any pending database migrations.
-- `ConnectionStrings`: SQL Server connection string to Identity server storage.
+- `OAuthServer`: Address of the Identity Server to authorize access to user management Apis. **If you are accessing the API from outside using an external IP address you may need to use that external address here.**
+- `InitializeDatabase`: Set `True` to initialize database configured in ConnectionStrings section. This creates the database if it doesn't exist, applies any pending database migrations and creates the admin user and a default client.
+- `ConnectionStrings:IdentityDatabase`: SQL Server connection string to Identity Server storage.
+- `TokenCleanUp:EnableCleanUp`: Flag indicating whether stale tokens will be automatically cleaned up from the database.
+- `TokenCleanUp:CleanUpInterval`: Token clean up interval in minutes.
+- `AllowedOrigins`: Enables support for Cross-Origin Resource Sharing. You can explicilty list the origins or use asterisk symbol as wildcard to allow all origins.  
 
 ### User Management
 
@@ -257,3 +267,40 @@ Example:
 ```
 DELETE api/v1/users/1e958756-40e7-4886-b58f-13055df8847c
 ```
+
+### Client Management
+
+Identity Server exposes a resource under `/clients` path to create new TAPI clients.
+
+#### Create New Client
+
+Url Mask:
+
+```
+POST api/{apiVersion}/clients
+```
+
+Example:
+
+```
+POST api/v1/clients
+```
+
+Request Body:
+
+```
+{
+  "clientId": "mvc.client",
+  "clientName": "MVC Client for TAPI",
+  "accessTokenLifetime": 3600,
+  "allowRefreshToken": true,
+  "refreshTokenLifetime": 3600
+}
+```
+Parameter explanation:
+
+ - `clientId`: Unique client identifier (required). 
+ - `clientName`: Descriptive name identify the client.
+ - `accessTokenLifetime`: Determines the period of validity of the access token in seconds. Must be larger than or equal to 1. It is recommended to keep the lifetime of the access token short and use the refresh token to renew access token. Default value is 1 hour.
+ - `allowRefreshToken`: Flag indicating whether to allow the client to refresh the access token without requiring username and password.
+ - `refreshTokenLifetime`: Determines the period of validity of refresh token in seconds. Set this to 0 to reuse the same refresh token.
