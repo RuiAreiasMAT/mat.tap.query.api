@@ -25,14 +25,14 @@ URIs for consuming data is grouped under two namespaces: `/data` and `/table/{fr
 
 ## Consuming Parameter Data
 
-You can consume parameter data using `/data` endpoint. For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. 
+You can consume parameter data using `/data` endpoint. For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. Parameter data resource supports content types `application/json` and `text/csv` (default). Latter is more optimized for downloading large amounts of parameter data.
 
 ### Base url masks
 
 Query with frequency:
 
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter};{aggregation}/{frequency}/data
 ```
 
 And querying without specifying frequency:
@@ -45,82 +45,141 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 
 | Parameter name | Description                                                                                         | Default value | Example     |
 |----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
-| connection     | Connection friendly name.   |               | SQLRACE01                                  |
-| sessionKey     | Session Key.               |               | 016fa61e-33e2-7e85-1bc9-4ab56c668136       |
-| parameter      | Name of the parameter.  |               | vCar   |
-| frequency      | Frequency of the results in Hz.  |               | 10            |
+| connection     | Connection friendly name.                                                                           |               | SQLRACE01   |
+| sessionKey     | Session Key.                                                                                        |               | 016fa61e-33e2-7e85-1bc9-4ab56c668136 |
+| parameter      | Name of the parameter                                                                               |               | vCar        |
+| aggregation    | Optional aggregation function separated by a semicolon `;`. *Do not add semicolon if you are not specifying an aggregation.* | `mean`  | ;max    |
+| frequency      | Frequency of the results in Hz.                                                                     |               | 10          |
 
 ### Optional parameters
 
-| Parameter name | Description                                                                                         | Default value | Example     |
-|----------------|-----------------------------------------------------------------------------------------------------|---------------|-------------|
-| from           | Filters data in session by time. All data returned would have a time stamp after the specified time.|    `null`     | 10:34       |
-| to             | Filters data in session by time. All data returned would have a time stamp before the specified time.|    `null`     | 10:50       |
-| lap            | Filters data for specified lap in session.                                                          |    `null`     | 3           |
-| filter         | Generic filter expression describing filters.                                                       |    `null`     | value;ge;300 |
-| page           | Index of page returned in result (0 is first page)                                                  |      0        | 3           |
-| pageSize       | Size of one page.                                                                                   |     200       | 50          |
-
+| Parameter name | Description                                                                                                  | Default value | Example     |
+|----------------|--------------------------------------------------------------------------------------------------------------|---------------|-------------|
+| from           | Filters data in session by time of day. All data returned would have a time stamp after the specified time.  |    `null`     | 10:34       |
+| fromNanos      | Filters data in session by time in nanoseconds since midnight. All data returned would have a time stamp after the specified time.| `null` | 10:34  |
+| to             | Filters data in session by time. All data returned would have a time stamp before the specified time.        |    `null`     | 10:50       |
+| toNanos        | Filters data in session by time in nanoseconds since midnight. All data returned would have a time stamp before the specified time. | `null` | 10:50 |
+| lap            | Filters data for specified lap in session.                                                                   |    `null`     | 3           |
+| filter         | Generic filter expression describing filters.                                                                |    `null`     | value;ge;300 |
+| page           | Index of page returned in result (0 is first page)                                                           |      0        | 3           |
+| pageSize       | Size of one page.                                                                                            |     200       | 50          |
+| timeUnit       | Units of time. Use `Ns` for nanoseconds and `Ms` for microseconds.                                           |      `Ns`     | `Ms`        |
+| groupBy        | Groups queries by fields (Only supported for InfluxDb storage). Use `*` to group by all available fields.    |     `null`    | `groupBy=lapnumber&groupBy=sessionId` |
 
 #### Query Parameter Data
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter}/{frequency}/data
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter};{aggregation}/{frequency}/data
 ```
 
 Example
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data?from=11:15&to=11:20&filter=value;gt;100,value;le;150
+GET api/v1/connections/M800960/sessions/64192714-90fe-4865-a191-a6887e465184/parameters/vCar;mean/10/data?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
-Result
-```json
-    {
-    "time": "14:50:51.4000000",
-    "value": 279.50857142857143
-  },
-  {
-    "time": "14:50:51.5000000",
-    "value": 280.149
-  },
-  {
-    "time": "14:50:51.6000000",
-    "value": 280.981
-  },
-  {
-    "time": "14:50:51.7000000",
-    "value": 281.859
-  },
-  {
-    "time": "14:50:51.8000000",
-    "value": 282.61400000000003
-  },
-  {
-    "time": "14:50:51.9000000",
-    "value": 283.427
-  },
-  {
-    "time": "14:50:52",
-    "value": 284.20899999999995
-  }
+Csv Result:
+```
+time,tagValues,vCar
+1549534712000000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,1.2
+1549534712100000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,0.762
+1549534712200000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,1.214
+1549534712300000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,3.044
+1549534712400000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,2.701
+1549534712500000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,1.355
+1549534712600000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,0.07
+1549534712700000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,1.506
+1549534712800000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,2.069
+1549534712900000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,1.421
+1549534713000000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,0.005
+1549534713100000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,0.416
+1549534713200000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,0.81
+1549534713300000000,lapnumber=1l;sessionId=64192714-90fe-4865-a191-a6887e465184;topic=TestTopic,0.275
+```
+
+Json Result:
+```
+{
+    "parameters":{
+        "vCar":{
+            "timestamps:[
+                1549534712000000000,
+                1549534712100000000,
+                1549534712200000000,
+                1549534712300000000,
+                1549534712400000000,
+                1549534712500000000,
+                1549534712600000000,
+                1549534712700000000,
+                1549534712800000000,
+                1549534712900000000,
+                1549534713000000000,
+                1549534713100000000,
+                1549534713200000000,
+                1549534713300000000
+            ],
+            "values":[
+                1.2,
+                0.7619999999999999,
+                1.214,
+                3.0440000000000005,
+                2.7010000000000005,
+                1.355,
+                0.069999999999999993,
+                1.5059999999999998,
+                2.069,
+                1.421,
+                0.005,
+                0.41600000000000004,
+                0.80999999999999994,
+                0.275
+            ]
+        }
+    }
+}
 ```
 
 #### Query Parameter Data Count
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameterName}/{frequency}/data/count
+GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter};{aggregation}/{frequency}/data/count
 ```
 
 Example
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar/10/data/count?from=11:15&to=11:20&filter=value;gt;100,value;le;150
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters/vCar;mean/10/data/count?from=11:15&to=11:20&filter=vCar;gt;100,vCar;le;150
 ```
 
 Result
 ```
 5646
+```
+
+#### Aggregate Parameter Data over Tags.
+
+If your backing storage is InfluxDb, you can aggregate parameter data over InfluxDb tags.
+
+Mask
+```
+GET api/v1/connections/{sessionKey}/parameters/{parameter};{aggregation}/data/aggregate?groupBy={tag1}&groupBy={tag2}
+```
+
+Example
+```
+GET api/v1/connections/{sessionKey}/parameters/64192714-90fe-4865-a191-a6887e465184;mean/data/aggregate?groupBy=lapnumber
+```
+
+Result
+```
+time,tagValues,vCar:Chassis
+1549534711876000000,lapnumber=1l,112.335688215992
+1549534711876000000,lapnumber=2l,199.965857988166
+1549534711876000000,lapnumber=3l,225.134068751761
+1549534711876000000,lapnumber=4l,191.609365859654
+1549534711876000000,lapnumber=5l,209.018854306413
+1549534711876000000,lapnumber=6l,179.251327235393
+1549534711876000000,lapnumber=7l,186.329971860711
 ```
 
 ## Parameters Table
