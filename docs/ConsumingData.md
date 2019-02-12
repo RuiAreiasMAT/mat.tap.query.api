@@ -16,7 +16,12 @@ Consuming Data
 
 URIs for consuming data is grouped under two namespaces: `/data` and `/table/{frequency}/data`. The difference between the two paths is that resources under `/data` works with both InfluxDb and SqlRace while `/table/{frequency}/data` resources currently only support SqlRace as the backing storage.
 
-The main difference in the functionality of the two endpoints is that you can query multipe parameters over multiple sessions at a time with `/table/{frequency}/data`. You can specifiy parameters in the URL or using views (See [Views](/docs/Views.md)). On the other hand, if the backing storage is InfluxDb, you can only query using one parameter at a time. Support for multiple parameters is in the roadmap. `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
+## Differences between the two namespaces
+
+ - Resources under `/data` namespace gets first-class support from InfluxDb. This means that, if you are using InfluxDb as the backing storage, you gain access to a range of aggregations such as minimum, maximum, median, standard deviation during down-sampling, filtering in both nanoseconds and time of the day.
+ - Resources under `/data` namespace gives more flexibility in response formatting. You can request data in either Json format or more optimized Csv format, you  can request time in microseconds or nanoseconds. This flexibility may be more useful if your client is web-based.
+ - Resources under `/table/{frequency}/data` namespace enables you to query multiple parameters across multiple sessions at a time while `/data` only allows you to query one parameter from a single parameter at time (support for multiple parameters under `/data` is in the roadmap).
+ - Resources under `/table/{frequency}/data` URIs also give access to some extra resources such as grouped data and time ranges which are currently not available for InfluxDb storage queries.
 
 ## Consuming Parameter Data
 
