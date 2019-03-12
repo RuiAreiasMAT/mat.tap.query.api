@@ -16,12 +16,12 @@
 
 This API uses token authentication. You use your username/password to ask the server for an access token, then you include this access token in the header in all requests to the server. Please note that for SqlRace, OAuth server is embedded. Hence, you can use the same API to get the access token as TAPI. However, for InfluxDb API, OAuth server is called Identity Server and is deployed as a separate API. Hence, the address of the token endpoint and Swagger UI should use the hostname and port number of that server. Please refer to the Swagger UI for [Identity Server](/docs/IdentityServer.md) to test the token endpoint. 
 
-## Getting a token
+## Getting Access Token
 
 To ask for a token you have to use the following endpoint with parameters `username`, `password` and `grant_type` (and `client_id` for Identity Server) in the body of the request as url encoded form data:
 
 ```
-GET /token
+POST /token
 ```
 
 Note that default values for ```username```, ```password``` and ```client_id``` in a new installation of the API are **"admin"**, **"admin"** and **"default.tapi.client"** respectively. Field ```grant_type``` is always the same value as **"password"**.
@@ -34,7 +34,7 @@ Following image shows an example of this type of request for Identity Server usi
 
 <img src="AuthorizationInflux.png" alt="drawing" width="80%"/>
 
-Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON.
+Field ```access_token``` of the result gives you the bearer token that you want to use. Token expires in the number of seconds returned in JSON. If you have configured the client to allow using a refresh token, you may also see the field ```refresh_token``` in the response. More information on how to use the refresh token can be found in [Using Refresh Token](#using-refresh-token) section.
 
 ## Validate Access Token
 
@@ -47,6 +47,19 @@ Equivalently, you can navigate to **Headers** tab in Postman and enter **Authori
 <img src="Authorization2.png" alt="drawing" width="80%"/>
 
 In order to test authentication using Swagger UI, please see [Testing Authentication with Swagger UI](/docs/SwaggerUIAuth.md).
+
+## Using Refresh Tokens
+
+Refresh token allows the client to continue using the Api in the absence of resource owner. By hitting the token endpoint with the refresh token periodically, access token continues to remain valid. To refresh the token, use the parameters ```client_id``` (your client id), ```grant_type``` (set to ```refresh_token```) and ```refresh_token``` (set the value of your refresh token) in the body of the request as url encoded form data.
+
+```
+POST /token
+```
+
+Note that unless otherwise configured, your refresh token will change each time you refresh the token. More information about configuring refresh token, refer to [Identity Server](/docs/IdentityServer.md/#create-new-client) section.
+
+
+
 
 
 
