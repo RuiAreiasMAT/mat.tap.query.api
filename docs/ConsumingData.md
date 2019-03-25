@@ -43,7 +43,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 |----------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------|
 | connection     | Connection friendly name.                                                                           |    SQLRACE01                            |
 | sessionKey     | Session Key.                                                                                        |    016fa61e-33e2-7e85-1bc9-4ab56c668136 |
-| parameter      | Name(s) of the parameter(s) *Multiple parameters can be requested by separating them with a comma*  |    vCar:Chassis, gLat:Chassis           |
+| parameter      | Name(s) of the parameter(s). *Multiple parameters can be requested by separating them with a comma*  |    vCar:Chassis, gLat:Chassis           |
 | frequency      | Frequency of the results in Hz.                                                                     |    10                                   |
 
 
@@ -59,7 +59,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 |----------------|------------------------------------------------------------------------------------------------------------------------------|---------------------|-----------------------------------------|
 | connection     | Connection friendly name.                                                                                                    |                     |    SQLRACE01                            |
 | sessionKey     | Session Key.                                                                                                                 |                     |    016fa61e-33e2-7e85-1bc9-4ab56c668136 |
-| parameter      | Name(s) of the parameter(s) *Multiple parameters can be requested by separating them with a comma*                           |                     |    vCar:Chassis, gLat:Chassis           |
+| parameter      | Name(s) of the parameter(s). *Multiple parameters can be requested by separating them with a comma*                           |                     |    vCar:Chassis, gLat:Chassis           |
 | aggregation    | Optional aggregation function separated by a semicolon `;`. *Do not add semicolon if you are not specifying an aggregation.* |    `mean`           |    ;max                                 |
 | frequency      | Frequency of the results in Hz.                                                                                              |                     |    10                                   |
 
