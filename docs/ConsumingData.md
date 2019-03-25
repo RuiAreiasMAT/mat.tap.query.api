@@ -400,7 +400,7 @@ Json Result:
 
 #### Query Parameter Data Count
 
-This functionality is either available for `/data` namespaces with and without frequency. 
+This functionality is either available for `/data` namespace with and without frequency. 
 
 Mask
 ```
