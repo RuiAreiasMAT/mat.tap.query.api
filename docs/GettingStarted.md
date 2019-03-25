@@ -1,7 +1,5 @@
 # ![logo](/docs/branding.bmp) Telemetry Analytics API
 
-![Build Status](https://mat-ocs.visualstudio.com/Telemetry%20Analytics%20Platform/_apis/build/status/MAT.TAP.TelemetryAnalytics.API/MAT.TAP.TelemetryAnalytics.API%20-%20Pull%20Request%20Gateway?branchName=develop)
-
 ### Table of Contents
 - [**Introduction**](/README.md)<br>
 - [**Installation**](/docs/Installation.md)<br>
@@ -72,6 +70,12 @@ SQLRace connections that you can get from the endpoint ```api/v1/connections``` 
 
 InfluxDb connections that you can get from the endpoint ```api/v1/connections``` depend on the [InfluxDb Writer](https://github.com/McLarenAppliedTechnologies/mat.tap.aas.influxdb) configuration settings used while recording the session. These settings need to be created in the `api/v1/connections` before querying.
 
+### Description:
+
+It is possible to store data for a given topic into multiple influx databases based on the label used in the connection settings.
+This schema allows to scale the data horizontaly and separate it according to different labels.
+The *sqlServerConnectionString* and *identifier* is shared between the *influxDbDetails*.
+
 You can create a new connection using `POST` request:
 
 ```
@@ -82,24 +86,53 @@ Request:
 
 ```
 {
-  "influxDbUrl": "http://10.228.4.17:8086",
-  "measurementName": "Marple",
+  "influxDbDetails": [
+    {
+      "topicName": "Topic",
+      "label": "Driver1",
+      "influxDbUrl": "http://localhost:8000",
+      "influxDbDatabase": "Database1",
+      "measurementName": "Marple",
+      "identifier": "Season2017"
+    }
+  ],
   "identifier": "Season2017",
-  "sqlServerConnectionString": "server=.\\SQLEXPRESS;Initial Catalog=Telemetry.Analytics.API.Influx.Sessions;User Id=test;Password=test;"
+  "sqlServerConnectionString": "server=.\\SQLEXPRESS;Initial Catalog=Database;User Id=UserId;Password=Password;"
 }
 ```
 
 Result:
 
 ```
-{
-  "influxDbUrl": "http://10.228.4.17:8086",
-  "measurementName": "Marple",
-  "identifier": "Season2017",
-  "sqlServerConnectionString": "server=.\\SQLEXPRESS;Initial Catalog=Telemetry.Analytics.API.Influx.Sessions;User Id=test;Password=test;"
-}
+[
+  {
+    "influxDbDetails": [
+      {
+        "topicName": "Topic1",
+        "label": "*",
+        "influxDbUrl": "http://localhost:8000",
+        "influxDbDatabase": "Database1",
+        "measurementName": "Marple",
+        "identifier": "Season2017"
+      },
+      {
+        "topicName": "Topic2",
+        "label": "*",
+        "influxDbUrl": "http://localhost:8000",
+        "influxDbDatabase": "Database1",
+        "measurementName": "Furnels",
+        "identifier": "Season2017"
+      }
+    ],
+    "identifier": "Season2017",
+    "sqlServerConnectionString": "server=.\\SQLEXPRESS;Initial Catalog=Database;User Id=UserId;Password=Password;"
+  },
+  *...*
 ```
 
+- `topicName` is the name of the topic used to stream data to.
+- `label` label can be used to split sessions within a topic.
+- `influxDbDatabase` is the name of the influx db database.
 - `influxDbUrl` is the address of the InfluxDb instance used to store data.
 - `measurementName` is the name of the InfluxDb database (timeseries). Usually, this is the same as the topic name of the stream.
 - `identifier` is a string that uniquely identifies the connection.
