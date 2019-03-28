@@ -17,7 +17,7 @@
 	 - Download and install it if you don't have it.
 	 - You don't need to create a Postman account to use it.
 
-2. Get a password.
+2. Get a token.
 
 	- For an example of this, see the [Authorization](Authorization.md) page (but change the username and password)
 	- For those who are not familiar with token authentication, you use your username and password to ask the authentication server for an access token. You then include this access token in the header in all HTTP requests to the API.
@@ -28,6 +28,17 @@
 	
 ## Connections
 
+Under connections it is possible to get, create, update or delete connections.
+
+## Where can I setup my connections?
+
+### SqlRace Connections
+
+SQLRace connections retrieved via api/v1/connections are from the shared SQLRace configuration on the server. If you are working locally with this API service you can configure these connections using ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
+
+<img src="/docs/AtlasDbManager.png" alt="Atlas Database Manager" width="90%"/>
+
+
 Telemetry Query API could be connected to multiple sources of data. You can query these sources with the following endpoint:
 
 ```
@@ -35,11 +46,9 @@ GET api/v1/connections
 ```
 
 Result:
-
 ```json
 [
     {
-        "FriendlyName": "Season2017",
         "ServerName": "SqlRace-RESTAPI\\SQLEXPRESS",
         "IsSqlite": false,
         "DatabaseName": "SQLRACE01",
@@ -47,7 +56,6 @@ Result:
         "RootPath": "C:\\SQLRace_Filestream"
     },
     {
-        "FriendlyName": "Live Session Cache",
         "ServerName": "DbEngine=SQLite;Data Source=C:\\Users\\AdminRestApi\\AppData\\Local\\McLaren Applied Technologies\\ATLAS 10\\SQL Race\\LiveSessionCache.ssn2;PRAGMA journal_mode=WAL;",
         "IsSqlite": true,
         "DatabaseName": "C:\\Users\\AdminRestApi\\AppData\\Local\\McLaren Applied Technologies\\ATLAS 10\\SQL Race\\LiveSessionCache.ssn2 ",
@@ -56,15 +64,6 @@ Result:
     }
 ]
 ```
-
-
-## Where can I setup my connections?
-
-### SqlRace Connections
-
-SQLRace connections that you can get from the endpoint ```api/v1/connections``` are shared with server local SQLRace configuration. If you are working locally with this API service you can configure these connections using ATLAS 10 or SQLRace client. You can access connections configuration from Atlas 10 via Options -> Database Connection Manager:
-
-<img src="/docs/AtlasDbManager.png" alt="Atlas Database Manager" width="90%"/>
 
 ### InfluxDb Connections
 
@@ -83,8 +82,7 @@ POST api/v1/connections
 ```
 
 Request:
-
-```
+```Json
 {
   "influxDbDetails": [
     {
@@ -94,6 +92,14 @@ Request:
       "influxDbDatabase": "Database1",
       "measurementName": "Marple",
       "identifier": "Season2017"
+    },
+    {
+      "topicName": "Topic2",
+      "label": "*",
+      "influxDbUrl": "http://localhost:8000",
+      "influxDbDatabase": "Database1",
+      "measurementName": "Furnels",
+      "identifier": "Season2017"
     }
   ],
   "identifier": "Season2017",
@@ -102,8 +108,7 @@ Request:
 ```
 
 Result:
-
-```
+```Json
 [
   {
     "influxDbDetails": [
@@ -130,17 +135,17 @@ Result:
   *...*
 ```
 
-- `topicName` is the name of the topic used to stream data to.
-- `label` label can be used to split sessions within a topic.
+- `topicName` is the name of the topic used to stream data.
+- `label` label can be used to split sessions within a topic. *Note: If no label is specified than this will be used as the default one.*
 - `influxDbDatabase` is the name of the influx db database.
 - `influxDbUrl` is the address of the InfluxDb instance used to store data.
-- `measurementName` is the name of the InfluxDb database (timeseries). Usually, this is the same as the topic name of the stream.
+- `measurementName` is the name of the measurement used to store parameter samples within the influx database. Good practice to use topic name and label combination (without special characters), but it can be anything.
 - `identifier` is a string that uniquely identifies the connection.
 - `sqlServerConnectionString` is the connection string of the SQL database that stores session metadata.
 
 You can also update and delete existing connections using `PUT` and `DELETE` requests based on the connection identifier. Please refer to the [Swagger UI](#swagger) for more information.
 
-## Query connection
+## Query sessions
 
 Every connection provides a list of [Sessions](/docs/Sessions.md). You can query these [Sessions](/docs/Sessions.md) using the "FriendlyName" of the connection:
 
@@ -154,37 +159,73 @@ GET api/v1/connections/Simulator/sessions
 Paging is supported by this query. Page and page size can be specified. Default page size is 50 sessions in one page.
 
 ```
-GET api/v1/connections/Simulator/sessions?page=1&pageSize=
+GET api/v1/connections/Simulator/sessions
 ```
+
+SqlRace response:
+
 Result:
 ```json
-    {
-        "Key": {
-            "value": "67ad8a93-6ba7-4c5d-9947-9c0e963ccf9e"
-        },
-        "Identifier": "171023220758",
-        "TimeOfRecording": "2017-10-23T22:07:58.3646176",
-        "TimeZone": "UTC",
-        "SessionType": "SessionType",
-        "StartTime": "00:00:00",
-        "EndTime": "00:00:00",
-        "LapsCount": 0,
-        "Id": 1301,
-        "State": 2
-    }, {
-        "Key": {
-            "value": "0661d026-271d-4f2a-a255-b977438a10fe"
-        },
-        "Identifier": "171023220700",
-        "TimeOfRecording": "2017-10-23T22:07:00.0236738",
-        "TimeZone": "UTC",
-        "SessionType": "SessionType",
-        "StartTime": "00:00:00",
-        "EndTime": "00:00:00",
-        "LapsCount": 0,
-        "Id": 1296,
-        "State": 2
-    }
+[
+  {
+    "Key": "7a0f9cdf-8535-b0bd-5efc-83c5ea5e95a0",
+    "Identifier": "Identfier1",
+    "TimeOfRecording": "2017-05-12T10:42:15.2374652",
+    "TimeZone": "UTC",
+    "SessionType": "Session",
+    "Start": "1970-01-01T13:12:54.425",
+    "End": "1970-01-01T14:46:38.36",
+    "LapsCount": 28,
+    "State": "Historical",
+    "SessionDetails": null
+  },
+  {
+    "Key": "0bc99d7a-596f-c3e9-3454-fa4439891a8b",
+    "Identifier": "Identfier2",
+    "TimeOfRecording": "2017-05-11T14:04:29.8996347",
+    "TimeZone": "UTC",
+    "SessionType": "Session",
+    "Start": "1970-01-01T12:40:59.949",
+    "End": "1970-01-01T12:47:25.889",
+    "LapsCount": 1,
+    "State": "Historical",
+    "SessionDetails": null
+  }
+]
+```
+
+InfluxDb response:
+
+Result:
+```json
+[
+  {
+    "key": "0432c948-0ab0-4270-9fe9-d0b9b08af7a0",
+    "identifier": "Identifier1",
+    "timeOfRecording": "2016-03-28T14:23:09.3932003",
+    "timeZone": null,
+    "sessionType": "StreamSession",
+    "start": "2019-03-28T18:22:14.771",
+    "end": "2019-03-28T18:22:29.943",
+    "lapsCount": 1,
+    "state": "Closed",
+    "topicName": "TopicName1",
+    "sessionDetails": []
+  },
+  {
+    "key": "0912bade-c473-4385-bb26-af0631148693",
+    "identifier": "Identifier2",
+    "timeOfRecording": "2016-03-28T15:12:39.4050654",
+    "timeZone": null,
+    "sessionType": "StreamSession",
+    "start": "2019-03-28T19:12:37.756",
+    "end": "2019-03-28T19:13:27.885",
+    "lapsCount": 1,
+    "state": "Closed",
+    "topicName": "TopicName2",
+    "sessionDetails": []
+  }
+]
 ```
 
 ## Swagger
