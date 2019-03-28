@@ -33,7 +33,7 @@ It is possible to consume parameter data using `/data` endpoint. For resources u
 Querying without specifying frequency endpoint:
 
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1,parameter_2,...,parameter_n}/data
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1,parameter_2,...,parameter_n}/data
 ```
 
 ### Url parameters
@@ -49,7 +49,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 Query with frequency:
 
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,...,parameter_n;aggregation_n};/{frequency}/data 
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,...,parameter_n;aggregation_n};/{frequency}/data 
 ```
 
 ### Url parameters
@@ -121,7 +121,7 @@ Note that some paremeters have a colon ( : ) in, so we use semicolons ( ; ) for 
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1,parameter_2,...,parameter_n}/data
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1,parameter_2,...,parameter_n}/data
 ```
 
 Example
@@ -204,7 +204,7 @@ It is demonstrated in this section several requests and combinations of the filt
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
 ```
 
 Example
@@ -350,7 +350,7 @@ Json Result:
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
 ```
 
 Example
@@ -464,7 +464,7 @@ Json Result
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
 ```
 
 Example
@@ -578,7 +578,7 @@ Json Result
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter_1;aggregation_1,parameter_2;aggregation_2,...,parameter_n;aggregation_n}/{frequency}/data
 ```
 
 Example
@@ -712,7 +712,7 @@ This functionality is available for `/data` with and without frequency.
 
 Mask
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter};{aggregation}/{frequency}/data/count
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters/{parameter};{aggregation}/{frequency}/data/count
 ```
 
 Example
