@@ -14,17 +14,18 @@
 Consuming Data
 =====================
 
-URIs for consuming data are grouped under the namespace `/data`. <br />
+In this section is described what endpoints are available and how to consume parameter data.<br />
+URIs for consuming data are grouped under the namespace `/data`.<br />
 It is possible to consume data from two different data storages being those influxDb and SqlRace. It is offered in both data stores the possibility to retrieve data with a specific frequency or without it.
 
 - The resource under `{frequency}/data` having <ins>InfluxDb</ins> as the backing data storage, provides support to a range of aggregations such as Count, Mean, Median, Sum, First, Last, Max, Min, Stddev. *NOTE: Distinct is currently not supported for multiple parameters*
 - The resource under `{frequency}/data` having <ins>SqlRace</ins> as the backing data storage, provides support to aggregations such as First, Mean, Max, Min.
 - The resource `/data/aggregate` for <ins>InfluxDb</ins> data storage provide an option for down-sampling, allowing to specify any of the supported aggregations. *Note:* Currently the down-sampling is done using a specific frequency of 20 Hz (in the future the most precise frequency from all parameters will be the selected one).
-- All resources under `/data` for both data storages provide different response formats. It is possible to request data in either Json format or more optimized Csv format, besing the latest one more optimized for downloading large amounts of parameter data. This flexible approach allows for a data format to be chosen given the technical requirements of the client application (e.g. web applications). Both data storages allow you to query one or multiple parameters for a given session.
+- All resources under `/data` for both data storages provide different response formats. It is possible to request data in either Json format or more optimized Csv format, being the latest one more optimized for downloading large amounts of parameter data. This flexible approach allows for a data format to be chosen given the technical requirements of the client application (e.g. web applications). Both data storages allow you to query one or multiple parameters for a given session.
 
 ## Consuming Parameter Data
 
-You can consume parameter data using `/data` endpoint. For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. Parameter data resource supports content types `application/json` and `text/csv` (default). The The latest one is more optimized for downloading large amounts of parameter data.
+It is possible to consume parameter data using `/data` endpoint. For resources under `/data` path, two url masks are available for querying data. One to query with the frequency of data specified and one without. Parameter data resource supports content types `application/json` and `text/csv` (default). The The latest one is more optimized for downloading large amounts of parameter data.
 
 
 ### Base url masks
@@ -80,7 +81,7 @@ Optionally it is possible to filter the data by the following parameters:
 
 ### More on filtering
 
-Filter currently is done uppon applying to a specific field the sample mode <ins>Mean</ins>. There are multiple types of filters.
+Filter currently is done uppon applying to a specific field the sample mode <ins>Mean</ins>. There are multiple types of filters being those:
 
 #### Filter types
 
@@ -93,7 +94,7 @@ Filter currently is done uppon applying to a specific field the sample mode <ins
 | le       | Less than or equal    |
 | ne       | Not equal             |
 
-#### Parameter filter
+#### Parameter filter construction
 
 Structure of one parameter filter is:
 
@@ -468,7 +469,7 @@ GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/paramet
 
 Example
 ```
-GET api/v1/connections/Connection/sessions/64192714-90fe-4865-a191-a6887e465184/parameters/vCar:Chassis/10/data?pageSize=10&filter=vCar:Chassis;ge;300 
+GET api/v1/connections/Connection/sessions/64192714-90fe-4865-a191-a6887e465184/parameters/vCar:Chassis;mean,gLat:Chassis;mean/10/data?pageSize=10&filter=vCar:Chassis;ge;300 
 ```
 
 Csv Result:
