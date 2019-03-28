@@ -74,7 +74,7 @@ InfluxDb connections that you can get from the endpoint ```api/v1/connections```
 
 It is possible to store data for a given topic into multiple influx databases based on the label used in the connection settings.
 This schema allows to scale the data horizontaly and separate it according to different labels.
-The *sqlServerConnectionString* and *identifier* is shared between the *influxDbDetails*.
+The *sqlServerConnectionString* and *identifier* are shared between the *influxDbDetails*.
 
 You can create a new connection using `POST` request:
 
