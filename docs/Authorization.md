@@ -55,10 +55,3 @@ POST /token
 ```
 
 Note that unless otherwise configured, your refresh token will change each time you refresh the token. More information about configuring refresh token, refer to [Identity Server](/docs/IdentityServer.md/#create-new-client) section.
-
-
-
-
-
-
-
