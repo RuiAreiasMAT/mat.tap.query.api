@@ -699,7 +699,7 @@ Laps
 ====  
 
 The ```/sessions/{sessionKey}/laps``` endpoint gives you access to information related to the **laps** of a specific session.
-This endpoint provide a set of optional parameters.
+This endpoint provides a set of optional parameters.
 
 | Parameter name | Description                                                 | Example           |  
 |----------------|-------------------------------------------------------------|-------------------|  
