@@ -13,7 +13,7 @@
 
 ## Querying Metadata
 
-This section explains in detail what endpoints are available to retreive session metadata and how to execute them.
+This section explains in detail what endpoints are available to retrieve session metadata and how to execute them.
 It is possible to collect session metadata from both InfluxDb and SqlRace data storages. Collected data is provided in Json format.
 
 Sessions
@@ -109,8 +109,8 @@ The ```/sessions``` endpoint provides a set of optional parameters from which is
 | page           | Index of the page returned in result (0 is first page)      |               | 3                                                                         |  
 | pageSize       | Size of one page.                                           | 200           | 50                                                                        |
 | details        | Filters sessions by session details like driver, car etc.   |               | Driver:KHA,Car:P1GTR                                                      |  
-| filter         | It allows to filter the returned set of results.            |               | state;eq;Closed                                                           |  
-| order          | It allows to order by the returned set of results.          |               | timeofrecording:desc                                                      |
+| filter         | It allows filtering on the results.                         |               | state;eq;Closed                                                           |  
+| order          | It allows ordering of the results.                          |               | timeofrecording:desc                                                      |
 
 
 Filters
@@ -396,7 +396,7 @@ Result
 
 ### <ins>Query a specific session by its identifier</ins>
 
-The API allows to retreive a session by its identifier.
+The API allows to retrieve a session by its identifier.
 
 Endpoint
 ```
@@ -427,7 +427,7 @@ Result
 
 ### <ins>Query all sessions by their sessions keys</ins>
 
-The API allows to retreive a session by its identifier.
+The API allows to retrieve a session by its identifier.
 
 Endpoint
 ```
@@ -479,7 +479,7 @@ Optional parameters
   
 | Parameter name | Description                                                 | Default value | Example       |  
 |----------------|-------------------------------------------------------------|---------------|---------------|  
-| filter         | It allows to filter the set of results.                     |               | lapsCount > 5 |  
+| filter         | It allows filtering on the results.                         |               | lapsCount > 5 |  
 | page           | Index of page returned in result (0 is first page)          |               | 3             |  
 | pageSize       | Size of one page.                                           | 50            | 100           |  
 
@@ -535,8 +535,8 @@ Optional parameters
 | pageSize       | Size of one page.                                           | 50                |  
 | contains       | Text filter applied to the <ins>identifier</ins> parameter. | vCar              |
 | startsWith     | Text filter applied to the <ins>identifier</ins> parameter  | vCar              |
-| filter         | It allows to filter the set of results.                     | Frequency;ge;10   |
-| order          | It allows to order by the returned set of results.          | MaximumValue:desc |
+| filter         | It allows filtering on the results.                         | Frequency;ge;10   |
+| order          | It allows ordering of the results.                          | MaximumValue:desc |
 
 ### Paging  
 
