@@ -632,7 +632,7 @@ GET api/v1/connections/{connection name}/sessions/{sessionKey}/details
   
 Example  
 ```
-GET api/v1/connections/Coonection/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
+GET api/v1/connections/Connection/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
 ```
   
 Result  
