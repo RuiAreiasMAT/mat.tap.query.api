@@ -299,7 +299,7 @@ Result
 Ordering
 ------
 
-To a collection of data is also provided the option of ordering the requested data set. The properties can be ordered by asc or desc.
+To a collection of data is also provided with the option of ordering the requested data set. The properties can be ordered by asc or desc.
 
 #### Property order construction
 
@@ -699,7 +699,7 @@ Laps
 ====  
 
 The ```/sessions/{sessionKey}/laps``` endpoint gives you access to information related to the **laps** of a specific session.
-This endpoint provides a set of optional parameters.
+This endpoint provide a set of optional parameters.
 
 | Parameter name | Description                                                 | Example           |  
 |----------------|-------------------------------------------------------------|-------------------|  
