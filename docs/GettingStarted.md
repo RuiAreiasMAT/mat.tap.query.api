@@ -13,18 +13,18 @@
 # Getting started
 
 1. For querying the server it is recommended (but not essential) to use [Postman](https://getpostman.com).
-
-	 - Download and install it if you don't have it.
-	 - You don't need to create a Postman account to use it.
+  - Download and install it if you don't have it.
+  - You don't need to create a Postman account to use it.
 
 2. Get a token.
-
 	- For an example of this, see the [Authorization](Authorization.md) page (but change the username and password)
 	- For those who are not familiar with token authentication, you use your username and password to ask the authentication server for an access token. You then include this access token in the header in all HTTP requests to the API.
 
 3. Use Swagger UI.
-
 	- An alternative way to test this API is using Swagger UI that it's embedded in the server. Refer to [Swagger](#swagger) section of this documentation for more information on how to use it.
+
+4. Data Explorer UI.
+	- A web based application that allows to visualize data ingested from the API, providing a set of features like aggregations and filtering.
 	
 ## Connections
 
@@ -71,7 +71,7 @@ InfluxDb connections that you can get from the endpoint ```api/v1/connections```
 
 ### Description:
 
-It is possible to store data for a given topic into multiple influx databases based on the label used in the connection settings.
+It is possible to store data for a given topic into multiple influx databases based on topic name and the label used in the connection settings.
 This schema allows to scale the data horizontaly and separate it according to different labels.
 The *sqlServerConnectionString* and *identifier* are shared between the *influxDbDetails*.
 
@@ -289,7 +289,4 @@ Example
         "deprecated": false
       }
     },
-    
-    
 ```
-
