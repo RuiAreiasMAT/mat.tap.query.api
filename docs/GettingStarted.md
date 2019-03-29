@@ -71,7 +71,7 @@ InfluxDb connections that you can get from the endpoint ```api/v1/connections```
 
 ### Description:
 
-It is possible to store data for a given topic into multiple influx databases based on the label used in the connection settings.
+It is possible to store data for a given topic into multiple influx databases based on topic name and the label used in the connection settings.
 This schema allows to scale the data horizontaly and separate it according to different labels.
 The *sqlServerConnectionString* and *identifier* are shared between the *influxDbDetails*.
 
@@ -292,4 +292,3 @@ Example
     
     
 ```
-
