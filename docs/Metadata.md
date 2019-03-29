@@ -23,14 +23,14 @@ The ```/sessions``` endpoint gives access to a list of **historical** sessions a
 
 ### Query all available sessions
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions
+GET api/v1/connections/{connection name}/sessions
 ```
 
 Example  
 ```
-GET api/v1/connections/TestConnection/sessions
+GET api/v1/connections/Connection/sessions
 ```
 
 Result  
@@ -131,25 +131,25 @@ There are multiple types of filters being those:
 | ne       | Not equal             |
   
 
-#### Parameter filter construction
+#### Property filter construction
 
 Structure of one parameter filter is:
 
-Parameter filter url mask
+Property filter url mask
 ```
-{parameterName};{filterOperationShortcut};{value}
+{property};{filterOperationShortcut};{value}
 ```
   
 #### <ins>Filtering by closed state</ins>
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions
+GET api/v1/connections/{connection name}/sessions
 ```
 
 Example  
 ```
-GET api/v1/connections/TestConnection/sessions?filter=state;eq;Closed
+GET api/v1/connections/Connection/sessions?filter=state;eq;Closed
 ```
 
 Result  
@@ -220,14 +220,14 @@ Result
 
 #### <ins>Filtering by time of recording bigger than</ins>
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions
+GET api/v1/connections/{connection name}/sessions
 ```
 
 Example  
 ```
-GET api/v1/connections/TestConnection/sessions?filter=timeOfRecording;gt;2018-12-03T00:00:00Z
+GET api/v1/connections/Connection/sessions?filter=timeOfRecording;gt;2018-12-03T00:00:00Z
 ```
 
 Result  
@@ -301,25 +301,25 @@ Ordering
 
 To a collection of data is also provided the option of ordering the requested data set. The properties can be ordered by asc or desc.
 
-#### Parameter order construction
+#### Property order construction
 
-Structure of one parameter filter is:
+Structure of one property filter is:
 
-Parameter filter url mask
+Property filter url mask
 ```
-{parameterName};{order}
+{property};{order}
 ```
 
 #### <ins>Ordering by end time descending</ins>
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions
+GET api/v1/connections/{connection name}/sessions
 ```
 
 Example  
 ```
-GET api/v1/connections/TestConnection/sessions?orderBy=end:desc
+GET api/v1/connections/Connection/sessions?orderBy=end:desc
 ```
 
 Result  
@@ -398,14 +398,14 @@ Result
 
 The API allows to retreive a session by its identifier.
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/id/{identifier}
+GET api/v1/connections/{connection name}/sessions/id/{identifier}
 ```
 
 Example  
 ```
-GET api/v1/connections/TestConnection/sessions/id/TestSession1
+GET api/v1/connections/Connection/sessions/id/TestSession1
 ```
 
 Result  
@@ -429,14 +429,14 @@ Result
 
 The API allows to retreive a session by its identifier.
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/id/{identifier}
+GET api/v1/connections/{connection name}/sessions/id/{identifier}
 ```
 
 Example  
 ```
-GET api/v1/connections/TestConnection/sessions/01388874-7a80-4d86-8020-8709c278fc9a,0151d834-7a23-46c6-a3fc-eb536adcf93b
+GET api/v1/connections/Connection/sessions/01388874-7a80-4d86-8020-8709c278fc9a,0151d834-7a23-46c6-a3fc-eb536adcf93b
 ```
 
 Result  
@@ -472,25 +472,20 @@ Result
 Live sessions  
 ===================  
 
-The ```/sessions/live``` endpoint gives you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several parameters.
+The ```/sessions/live``` endpoint gives you access to a list of **live** sessions available for a given connection. You can filter this list of sessions by several optional parameters.
 
 Optional parameters  
 -------------------  
   
-| Parameter name | Description                                                 | Default value | Example                                                                   |  
-|----------------|-------------------------------------------------------------|---------------|---------------------------------------------------------------------------|  
-| filter         | This filter returned query with expression.                 |               | LapsCount &gt; 5 %26%26 TimeOfRecording &gt; DateTime.Parse("2017-12-18") |  
-| page           | Index of page returned in result (0 is first page)          |               | 3                                                                         |  
-| pageSize       | Size of one page.                                           | 200           | 50                                                                        |  
-  
-Filter  
-------  
-  
-Please note that some characters are not allowed in URL and therefore must be specified with percentage sign and symbol number. For example: & must be replaced by %26.  
+| Parameter name | Description                                                 | Default value | Example       |  
+|----------------|-------------------------------------------------------------|---------------|---------------|  
+| filter         | It allows to filter the set of results.                     |               | lapsCount > 5 |  
+| page           | Index of page returned in result (0 is first page)          |               | 3             |  
+| pageSize       | Size of one page.                                           | 50            | 100           |  
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/live
+GET api/v1/connections/{connection name}/sessions/live
 ```
   
 Example  
@@ -498,20 +493,37 @@ Example
 GET api/v1/connections/Simulator/sessions/live
 ```
 
+Result
+```json
+[
+  {
+    "key": "06f2d6d8-5811-48f0-a7a0-50e84db12704",
+    "identifier": "Identifier10",
+    "timeOfRecording": "2018-11-29T00:00:00Z",
+    "sessionType": "StreamingSession",
+    "start": "2019-03-29T08:34:01.9697625Z",
+    "end": "2019-03-29T08:34:01.9697625Z",
+    "lapsCount": 0,
+    "state": "Open",
+    "topicName": "TopicName10",
+    "sessionDetails": []
+  }
+]
+```
 
 Parameters  
 ==========  
 
 The ```/sessions/{sessionKey}/parameters``` endpoint gives you access to a list of **parameters** available for a specific session. The list of **parameters** of a session are the fields related to the data that we can consume as described in [Consuming Data] (/docs/ConsumingData.md) section.
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/parameters
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/parameters
 ```
 
 Example  
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
+GET api/v1/connections/Connection/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters
 ```
   
 Optional parameters  
@@ -539,7 +551,7 @@ It is possible to provide filtering for
   
 Example 
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
+GET api/v1/connections/Connection/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/parameters?contains=vCar
 ```
   
 Result  
@@ -613,111 +625,165 @@ Details
 
 The ```/sessions/{sessionKey}/details``` endpoint gives you access to a list of **details** available for a specific session.
 
-Mask
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/details
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/details
 ```
   
 Example  
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
+GET api/v1/connections/Coonection/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/details
 ```
   
 Result  
 ```json
 [
-    {
-        "Name": "Session Description",
-        "Value": "P1GTR"
-    },
-    {
-        "Name": "Session Name",
-        "Value": "GAS R1"
-    },
-    {
-        "Name": "Session Number",
-        "Value": "R1"
-    },
-    {
-        "Name": "Driver",
-        "Value": "GAS"
-    },
-    {
-        "Name": "Car",
-        "Value": "P1GTR"
-    },
-    {
-        "Name": "Circuit",
-        "Value": "Bar"
-    },
-    {
-        "Name": "Race/Test",
-        "Value": "Simulator"
-    },
-    {
-        "Name": "Pit Lane Trigger",
-        "Value": "None"
-    },
-    {
-        "Name": "Unit Data Source",
-        "Value": "vTAG RF,Ethernet Telemetry/Wirelink "
-    },
-    {
-        "Name": "Date of recording",
-        "Value": "07/08/2017"
-    }
+  {
+    "key": "92ce7a51-83d1-43ec-bb0a-9cda685ca47c",
+    "identifier": "Identifier6",
+    "timeOfRecording": "2018-11-30T00:00:00Z",
+    "sessionType": "StreamingSession",
+    "start": "2017-03-29T08:34:01.9697625Z",
+    "end": "2017-03-29T08:34:01.9697625Z",
+    "lapsCount": 0,
+    "state": "Closed",
+    "topicName": "TopicName6",
+    "sessionDetails":
+    [
+      {
+          "Name": "Session Description",
+          "Value": "P1GTR"
+      },
+      {
+          "Name": "Session Name",
+          "Value": "GAS R1"
+      },
+      {
+          "Name": "Session Number",
+          "Value": "R1"
+      },
+      {
+          "Name": "Driver",
+          "Value": "GAS"
+      },
+      {
+          "Name": "Car",
+          "Value": "P1GTR"
+      },
+      {
+          "Name": "Circuit",
+          "Value": "Bar"
+      },
+      {
+          "Name": "Race/Test",
+          "Value": "Simulator"
+      },
+      {
+          "Name": "Pit Lane Trigger",
+          "Value": "None"
+      },
+      {
+          "Name": "Unit Data Source",
+          "Value": "vTAG RF,Ethernet Telemetry/Wirelink "
+      },
+      {
+          "Name": "Date of recording",
+          "Value": "07/08/2017"
+      }
+    ]
+  }
 ]
 ```
 
 Laps  
 ====  
 
-The ```/sessions/{sessionKey}/laps``` endpoint gives you access to information related to the **laps** of a specific session. 
-  
-Mask
+The ```/sessions/{sessionKey}/laps``` endpoint gives you access to information related to the **laps** of a specific session.
+
+### <ins>Query all laps from a given session</ins>
+
+Endpoint
 ```
-GET api/{apiVersion}/connections/{connection name}/sessions/{sessionKey}/laps
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/laps
 ```
   
 Example 
 ```
-GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
+GET api/v1/connections/Connection/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps
 ```
   
 Result
 ```json
 [
-    {
-        "StartTime": "12:08:15.5120000",
-        "EndTime": "12:09:05.7300000",
-        "LapTime": "00:00:50.2180000",
-        "CountForFastestLap": false,
-        "Name": "Out Lap",
-        "Number": 0
-    },
-    {
-        "StartTime": "12:09:05.7300000",
-        "EndTime": "12:13:37.1600000",
-        "LapTime": "00:04:31.4300000",
-        "CountForFastestLap": true,
-        "Name": "Lap 16",
-        "Number": 16
-    },
-    {
-        "StartTime": "12:13:37.1600000",
-        "EndTime": "12:16:15.0300000",
-        "LapTime": "00:02:37.8700000",
-        "CountForFastestLap": true,
-        "Name": "Lap 17",
-        "Number": 17
-    },
-    {
-        "StartTime": "12:16:15.0300000",
-        "EndTime": "12:18:48.8300000",
-        "LapTime": "00:02:33.8000000",
-        "CountForFastestLap": true,
-        "Name": "Lap 18",
-        "Number": 18
-    }
+  {
+    "start": "1970-01-01T00:00:00Z",
+    "end": "1970-01-01T00:00:00Z",
+    "lapTime": 2,
+    "countForFastestLap": true,
+    "name": "Name2",
+    "number": 2,
+    "sessionId": "test-session-id"
+  },
+  {
+    "start": "1970-01-01T00:00:00Z",
+    "end": "1970-01-01T00:00:00Z",
+    "lapTime": 3,
+    "countForFastestLap": false,
+    "name": "Name3",
+    "number": 3,
+    "sessionId": "test-session-id"
+  },
+  {
+    "start": "1970-01-01T00:00:00Z",
+    "end": "1970-01-01T00:00:00Z",
+    "lapTime": 4,
+    "countForFastestLap": true,
+    "name": "Name4",
+    "number": 4,
+    "sessionId": "test-session-id"
+  },
+  {
+    "start": "1970-01-01T00:00:00Z",
+    "end": "1970-01-01T00:00:00Z",
+    "lapTime": 5,
+    "countForFastestLap": false,
+    "name": "Name5",
+    "number": 5,
+    "sessionId": "test-session-id"
+  },
+  {
+    "start": "1970-01-01T00:00:00Z",
+    "end": "1970-01-01T00:00:00Z",
+    "lapTime": 6,
+    "countForFastestLap": true,
+    "name": "Name6",
+    "number": 6,
+    "sessionId": "test-session-id"
+  }
 ]
+```
+
+### <ins>Query a lap for a given session</ins>
+
+Endpoint
+```
+GET api/v1/connections/{connection name}/sessions/{sessionKey}/laps
+```
+  
+Example 
+```
+GET api/v1/connections/M800960/sessions/92ce7a51-83d1-43ec-bb0a-9cda685ca47c/laps/5
+```
+  
+Result
+```json
+{
+  "start": "1970-01-01T00:00:00Z",
+  "end": "1970-01-01T00:00:30Z",
+  "lapTime": 30000000000,
+  "countForFastestLap": false,
+  "name": "Lap",
+  "number": 5,
+  "sessionId": "session-id"
+}
 ```
