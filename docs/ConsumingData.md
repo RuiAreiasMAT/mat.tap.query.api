@@ -81,7 +81,7 @@ Optionally it is possible to filter the data by the following parameters:
 
 ### More on filtering
 
-Filter currently is done uppon applying to a specific field the sample mode <ins>Mean</ins>. There are multiple types of filters for example:
+Filter currently is done upon applying to a specific field the sample mode <ins>Mean</ins>. There are multiple types of filters for example:
 
 #### Filter types
 
